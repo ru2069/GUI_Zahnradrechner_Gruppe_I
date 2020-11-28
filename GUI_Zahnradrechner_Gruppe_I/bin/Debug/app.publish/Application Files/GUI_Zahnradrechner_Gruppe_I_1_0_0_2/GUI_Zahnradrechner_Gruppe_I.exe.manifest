@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="GUI_Zahnradrechner_Gruppe_I.exe" version="1.0.0.2" publicKeyToken="a28cc74aebffb473" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="logo.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="GUI_Zahnradrechner_Gruppe_I" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="GUI_Zahnradrechner_Gruppe_I.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC-Manifestoptionen
+          Wenn Sie die Zugangsebene für das Windows-Benutzerkonto ändern möchten, ersetzen Sie den 
+          requestedExecutionLevel-Knoten durch eines der folgenden Elemente.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Löschen Sie den requestedExecutionLevel-Knoten, wenn Sie 
+         zum Gewährleisten der Abwärtskompatibilität die Datei- und Registrierungsvirtualisierung verwenden möchten.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUI_Zahnradrechner_Gruppe_I.exe" size="1076656">
+      <assemblyIdentity name="GUI_Zahnradrechner_Gruppe_I" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>LOJcIZWJi7UKeQ9iKmMqWWT+bUp/gK2Jk9uSWHdCuAg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="GUI_Zahnradrechner_Gruppe_I.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="logo.ico" size="9662">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>XUBxb37uRojH/BGoeyzRO7EpNmFpa1NB+5sWU+aWa2c=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=RUNE-PC\rdier" issuerKeyHash="013713253593bf6d1c2eacf99552102833287e7b" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>7RbAcRwP3vMCWEkMoqEJJ3e0TwFlB6QQYDV97rxfEk4=</DigestValue></Reference></SignedInfo><SignatureValue>vMMxnGKBtgw5zdIPdpHEgsriLoc5LQ5HOZptAXZG/JTniyjO0v1CjdsOjre7csoWKvV1ax0pd5L3MUvhpJ/KTS1mXygUCsoSlLbPR1VGpXgpJN0kaH2Tt/c+UeCZL+ukYQ5OAHZ8YIHcF6xGSQG4ihWdb74CyKwhW5AZ3lNswzA=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>vzhPXpp+Wvn+T5FsmRpuMwcSiEiztzRYIYFemqaSb7EzrAUK9DXfTEkKMGoFBlOHjrw8Y8KcvRG/lbza4pDi8/1XVXU/k7GwVS2E5m+s1uAHn7m60gAvz+dEgLBu1F7HaebUSfQw1pb/BGbwIqZzepKpx6u+3XWpF5lJPucZZk0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="4e125fbcee7d356010a40765014fb4772709a1a20c495802f3de0f1c71c016ed" Description="" Url=""><as:assemblyIdentity name="GUI_Zahnradrechner_Gruppe_I.exe" version="1.0.0.2" publicKeyToken="a28cc74aebffb473" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=RUNE-PC\rdier</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>N3B1Fg7amsCqKfFUc4qa4MCTmR5ltn5HDbEVaSYwFPU=</DigestValue></Reference></SignedInfo><SignatureValue>OGuuVNxF1xYHhSxgBsmBKy72nXEDALH5CfPHukID05+fNvrEateovzCpx+1aN5PkC5rxKxLlNbpsqTj8gjj/YCGuU90Eq40BzweI2KZHRsB7Y6XZB8O//0/6nODDjks65JLUduH3PMVxeg7IEm1253JsD9FqxZtVIC8q1K8Oyzo=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>vzhPXpp+Wvn+T5FsmRpuMwcSiEiztzRYIYFemqaSb7EzrAUK9DXfTEkKMGoFBlOHjrw8Y8KcvRG/lbza4pDi8/1XVXU/k7GwVS2E5m+s1uAHn7m60gAvz+dEgLBu1F7HaebUSfQw1pb/BGbwIqZzepKpx6u+3XWpF5lJPucZZk0=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBzTCCATagAwIBAgIQHNbdvCaVJaFMUB6ucb2zODANBgkqhkiG9w0BAQsFADAlMSMwIQYDVQQDHhoAUgBVAE4ARQAtAFAAQwBcAHIAZABpAGUAcjAeFw0yMDExMjcxMDU3NTVaFw0yMTExMjcxNjU3NTVaMCUxIzAhBgNVBAMeGgBSAFUATgBFAC0AUABDAFwAcgBkAGkAZQByMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC/OE9emn5a+f5PkWyZGm4zBxKISLO3NFghgV6appJvsTOsBQr0Nd9MSQowagUGU4eOvDxjwpy9Eb+VvNrikOLz/VdVdT+TsbBVLYTmb6zW4AefubrSAC/P50SAsG7UXsdp5tRJ9DDWlv8EZvAipnN6kqnHq77ddakXmUk+5xlmTQIDAQABMA0GCSqGSIb3DQEBCwUAA4GBADxorNM1EpbgYVh3tIzsoLKHjl4OUnG0Q4XCYDfosQWku/p5EFwIkkOsxIy8Tx4TcU7zQ1Uugj2H3wdi/uECoNgeK+2s6OreGq179Pms232Lbn+nqA4lE7ngYYAEvBB2LG7q6RqIaWFEORP7hXtdLSM0Ee4xreijSFJxKWsXCOw3</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
