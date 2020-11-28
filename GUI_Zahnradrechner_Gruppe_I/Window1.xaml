@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Zahnradrechner_Gruppe_I"
         mc:Ignorable="d"
-        Title="Infobox" Height="450" Width="800" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450" Icon="E:\Hochschule\HSP Aufgaben\Zahnradberechnungsprogramm_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\Mini Logo 2.png">
+        Title="Infobox" Height="450" Width="800" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450" Icon="Mini Logo 2.png">
     <Grid Background="#FF9E9E9E">
         <Image HorizontalAlignment="Left" Height="350" Margin="88,0,0,0" VerticalAlignment="Center" Width="779" Source="hsp_2.png"/>
 
