@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace GUI_Zahnradrechner_Gruppe_I
 {
@@ -592,5 +593,51 @@ namespace GUI_Zahnradrechner_Gruppe_I
             lbl_schraegungswinkel.Visibility = Visibility.Visible;
             txb_schraegungswinkel.Visibility = Visibility.Visible;
         }
-    }
+
+
+        //API
+        public void btn_CatiaClick(object sender, RoutedEventArgs e)
+        {
+            CatiaControl();
+        }
+        public void CatiaControl()
+        {
+            try
+            {
+
+                CatiaConnection cc = new CatiaConnection();
+
+                // Finde Catia Prozess
+                if (cc.CATIALaeuft())
+                {
+                    // Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Erstelle eine Skizze
+                    cc.ErstelleLeereSkizze();
+
+                    // Generiere ein Profil
+                    cc.ErzeugeKontur(Convert.ToDouble(txb_zaehnezahl_außen.Text), 10);
+
+                    // Extrudiere Balken
+                    cc.ErzeugeZahnrad(Convert.ToDouble(txb_breite_außen.Text));
+                }
+                else
+                {
+                    MessageBox.Show("Laufende Catia Application nicht gefunden");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception aufgetreten");
+            }
+        }
+
+        private void btn_CatiaStart(object sender, RoutedEventArgs e)
+        {
+            Process P = new Process();
+            P.StartInfo.FileName = "CNEXT.exe";
+            P.Start();
+        }
+    }   
 }

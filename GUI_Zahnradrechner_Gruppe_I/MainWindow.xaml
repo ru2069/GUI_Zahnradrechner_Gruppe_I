@@ -221,6 +221,8 @@
                 </Canvas>
             </TabItem>
         </TabControl>
+        <Button Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" Margin="405,77,0,0" VerticalAlignment="Top" Width="138" Click="btn_CatiaClick"/>
+        <Button Content="Catia V5 starten" HorizontalAlignment="Left" Margin="290,77,0,0" VerticalAlignment="Top" Width="92" Click="btn_CatiaStart"/>
     </Grid>
 
 </Window>
