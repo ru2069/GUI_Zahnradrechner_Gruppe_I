@@ -600,6 +600,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             CatiaControl();
         }
+        private void btn_CatiaStart(object sender, RoutedEventArgs e)
+        {
+            Process P = new Process();
+            P.StartInfo.FileName = "CNEXT.exe";
+            P.Start();
+        }
         public void CatiaControl()
         {
             try
@@ -631,13 +637,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
             {
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
-        }
-
-        private void btn_CatiaStart(object sender, RoutedEventArgs e)
-        {
-            Process P = new Process();
-            P.StartInfo.FileName = "CNEXT.exe";
-            P.Start();
         }
     }   
 }
