@@ -596,15 +596,15 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
 
         //API
-        public void btn_CatiaClick(object sender, RoutedEventArgs e)
-        {
-            CatiaControl();
-        }
         private void btn_CatiaStart(object sender, RoutedEventArgs e)
         {
             Process P = new Process();
             P.StartInfo.FileName = "CNEXT.exe";
             P.Start();
+        }
+        public void btn_CatiaClick(object sender, RoutedEventArgs e)
+        {
+            CatiaControl();
         }
         public void CatiaControl()
         {
