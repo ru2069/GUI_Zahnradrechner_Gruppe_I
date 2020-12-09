@@ -19,3 +19,9 @@ E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe
 E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\bin\Debug\GUI_Zahnradrechner_Gruppe_I.application
 E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\GUI_Zahnradrechner_Gruppe_I.exe.manifest
 E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\GUI_Zahnradrechner_Gruppe_I.application
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\GUI_Zahnradrechner_Gruppe_I.csprojAssemblyReference.cache
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\MainWindow.g.cs
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\Window1.g.cs
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\App.g.cs
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\GUI_Zahnradrechner_Gruppe_I_MarkupCompile.cache
+C:\Users\Christian\Documents\GitHub\Übungen\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\GUI_Zahnradrechner_Gruppe_I_MarkupCompile.lref
