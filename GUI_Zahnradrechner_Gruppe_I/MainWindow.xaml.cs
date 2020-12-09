@@ -606,11 +606,17 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             CatiaControl();
         }
+
+        
         public void CatiaControl()
         {
+            double d = 200;
+            double m = 2;
+            double z = 100;
+            double b = 5;
+
             try
             {
-
                 CatiaConnection cc = new CatiaConnection();
 
                 // Finde Catia Prozess
@@ -623,10 +629,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     cc.ErstelleLeereSkizze();
 
                     // Generiere ein Profil
-                    cc.ErzeugeKontur(Convert.ToDouble(txb_zaehnezahl_außen.Text), 10);
+                    cc.ErzeugeProfil(d, m, z);
 
                     // Extrudiere Balken
-                    cc.ErzeugeZahnrad(Convert.ToDouble(txb_breite_außen.Text));
+                    cc.ErzeugeDasNeueKreismuster(z, b);
                 }
                 else
                 {

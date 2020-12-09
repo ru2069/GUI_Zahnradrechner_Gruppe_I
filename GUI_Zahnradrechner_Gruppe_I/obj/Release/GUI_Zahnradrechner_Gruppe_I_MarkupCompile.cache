@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Debug\
+E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\obj\Release\
 GUI_Zahnradrechner_Gruppe_I
 none
 false
-DEBUG;TRACE
+TRACE
 E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\GUI_Zahnradrechner_Gruppe_I\App.xaml
 2462529049
 
 91053911880
-19-1038602926
+161948276768
 MainWindow.xaml;Window1.xaml;
 
-False
+True
 

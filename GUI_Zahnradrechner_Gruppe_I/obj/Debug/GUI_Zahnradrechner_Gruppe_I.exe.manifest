@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUI_Zahnradrechner_Gruppe_I.exe" size="1084336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GUI_Zahnradrechner_Gruppe_I.exe" size="1090480">
       <assemblyIdentity name="GUI_Zahnradrechner_Gruppe_I" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>F70pcLgpl5+lbOhgkBlvl5eyjxsqe4MZRO9K2LdKCDg=</dsig:DigestValue>
+        <dsig:DigestValue>OYht490lITtTmEXJL+DLVTZez+eBf16yzIZpsAGyA9I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

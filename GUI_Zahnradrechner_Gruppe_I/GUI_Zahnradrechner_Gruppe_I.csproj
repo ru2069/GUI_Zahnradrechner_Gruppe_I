@@ -66,9 +66,19 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Interop.HybridShapeTypeLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\HSPRepoGruppeD\3.TestatZahnradCatiaAnbindung\Verweise\Interop.HybridShapeTypeLib.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.INFITF">
       <HintPath>Verweise\Interop.INFITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.KnowledgewareTypeLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\HSPRepoGruppeD\3.TestatZahnradCatiaAnbindung\Verweise\Interop.KnowledgewareTypeLib.dll</HintPath>
     </Reference>
     <Reference Include="Interop.MECMOD">
       <HintPath>Verweise\Interop.MECMOD.dll</HintPath>
@@ -77,6 +87,11 @@
     <Reference Include="Interop.PARTITF">
       <HintPath>Verweise\Interop.PARTITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.ProductStructureTypeLib, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\HSPRepoGruppeD\3.TestatZahnradCatiaAnbindung\Verweise\Interop.ProductStructureTypeLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
