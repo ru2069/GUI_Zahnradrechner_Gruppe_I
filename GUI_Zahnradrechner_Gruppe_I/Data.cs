@@ -8,6 +8,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
 {
     public class Data
     {
+        double teilkreisdurchmesser;
         double modul;
         double zähnezahl;
         double kreiszahl = Math.PI;
@@ -18,6 +19,15 @@ namespace GUI_Zahnradrechner_Gruppe_I
         double schr;
 
         //Inputs
+        public double getTeilkreisdurchmesser()
+        {
+            return teilkreisdurchmesser;
+        }
+
+        public void setTeilkreisdurchmesser(double teilkreisdurchmesser)
+        {
+            this.teilkreisdurchmesser = teilkreisdurchmesser;
+        }
         //Modul
 
         public double getModul()

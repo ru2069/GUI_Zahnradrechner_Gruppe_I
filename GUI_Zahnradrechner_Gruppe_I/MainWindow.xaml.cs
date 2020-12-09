@@ -233,6 +233,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
 
                 double d = prg.Teilkreisdurchmesser_d(dat.getModul(), dat.getZähnezahl());
+                dat.setTeilkreisdurchmesser(d);
                 txb_teilkreisdurchmesser.Text = Convert.ToString(Math.Round(d, round) + " mm");
 
                 double teilung = prg.Teilung_p(dat.getKreiszahl(), dat.getModul());
@@ -320,6 +321,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 txb_stirnteilung.Text = Convert.ToString(Math.Round(stirnteilung, round) + " mm");
 
                 double d = prg.schrägTeilkreisdurchmesser_d(stirnmodul, dat.getZähnezahl());
+                dat.setTeilkreisdurchmesser(d);
                 txb_teilkreisdurchmesser.Text = Convert.ToString(Math.Round(d, round) + " mm");
 
                 double teilung = prg.Teilung_p(dat.getKreiszahl(), dat.getModul());
@@ -403,6 +405,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 int round = Convert.ToInt32(cmb_rundung_innen.Text);
 
                 double d = prg.Teilkreisdurchmesser_d(dat.getModul(), dat.getZähnezahl());
+                dat.setTeilkreisdurchmesser(d);
                 txb_teilkreisdurchmesser1.Text = Convert.ToString(Math.Round(d, round) + " mm");
 
                 double teilung = prg.Teilung_p(dat.getKreiszahl(), dat.getModul());
@@ -610,10 +613,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
         
         public void CatiaControl()
         {
-            double d = 200;
-            double m = 2;
-            double z = 100;
-            double b = 5;
+            Data dat = new Data(); 
+            double d = dat.getTeilkreisdurchmesser();
+            double m = dat.getModul();
+            double z = dat.getZähnezahl();
+            double b = dat.getBreite();
 
             try
             {
@@ -629,10 +633,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     cc.ErstelleLeereSkizze();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(d, m, z);
+                    cc.ErzeugeProfil(dat);
 
                     // Extrudiere Balken
-                    cc.ErzeugeDasNeueKreismuster(z, b);
+                    cc.ErzeugeDasNeueKreismuster(dat);
                 }
                 else
                 {
