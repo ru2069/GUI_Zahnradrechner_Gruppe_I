@@ -161,9 +161,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
             KreisVerrundungLinks.CenterPoint = pointMittelpunktVerrundungLinks;
             KreisVerrundungLinks.StartPoint = pointFußkreisVerrundungLinks;
             KreisVerrundungLinks.EndPoint = pointVerrundungEvolventeLinks;
-            Console.WriteLine(xMittelpunktaufEvol_links);
-            Console.WriteLine(yMittelpunktaufEvol_links);
-            Console.WriteLine(EvolventenkreisRadius);
 
             Circle2D KreisEvolventenkreisLinks = catfactory2D1.CreateCircle(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, 0, Math.PI * 2);
             KreisEvolventenkreisLinks.CenterPoint = pointMittelpunktevolventeLinks;
