@@ -609,7 +609,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             Data dat = new Data();
 
-            try
+            //try
              {
             CatiaConnection cc = new CatiaConnection();
 
@@ -632,11 +632,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
             {
                 MessageBox.Show("Laufende Catia Application nicht gefunden");
             }
-            }
-            catch (Exception ex)
+            //}
+            /*catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
-            }
+            }*/
         }
 
 
