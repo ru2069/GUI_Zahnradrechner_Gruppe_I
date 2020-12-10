@@ -79,7 +79,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
         }
 
-        public Data ErzeugeProfil(Data dat)
+        public void ErzeugeProfil(Data dat)
         {
             //Nullpunkt
             double x0 = 0;
@@ -161,6 +161,9 @@ namespace GUI_Zahnradrechner_Gruppe_I
             KreisVerrundungLinks.CenterPoint = pointMittelpunktVerrundungLinks;
             KreisVerrundungLinks.StartPoint = pointFußkreisVerrundungLinks;
             KreisVerrundungLinks.EndPoint = pointVerrundungEvolventeLinks;
+            Console.WriteLine(xMittelpunktaufEvol_links);
+            Console.WriteLine(yMittelpunktaufEvol_links);
+            Console.WriteLine(EvolventenkreisRadius);
 
             Circle2D KreisEvolventenkreisLinks = catfactory2D1.CreateCircle(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, 0, Math.PI * 2);
             KreisEvolventenkreisLinks.CenterPoint = pointMittelpunktevolventeLinks;
@@ -187,11 +190,9 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaProfil.CloseEdition();
 
             hsp_catiaPart.Part.Update();
-
-            return dat;
         }
 
-        public Data ErzeugeDasNeueKreismuster(Data dat)
+        public void ErzeugeDasNeueKreismuster(Data dat)
         {
             ShapeFactory shapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             HybridShapeFactory hybridShapeFactory1 = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
@@ -228,15 +229,13 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             hsp_catiaPart.Part.Update();
 
-            ErzeugedenNeuenBlock(refVerbindung, shapeFactory1, dat.getBreite());
-
-            return dat;
+            ErzeugedenNeuenBlock(refVerbindung, shapeFactory1, dat);
         }
 
-        public void ErzeugedenNeuenBlock(Reference refVerbindung, ShapeFactory sf1, double b)
+        public void ErzeugedenNeuenBlock(Reference refVerbindung, ShapeFactory sf1, Data dat)
         {
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
-            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, b);
+            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, dat.getBreite());
 
 
 

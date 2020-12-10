@@ -607,46 +607,39 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
         {
-            CatiaControl();
-        }
-
-        
-        public void CatiaControl()
-        {
-            Data dat = new Data(); 
-            double d = dat.getTeilkreisdurchmesser();
-            double m = dat.getModul();
-            double z = dat.getZähnezahl();
-            double b = dat.getBreite();
+            Data dat = new Data();
 
             try
+             {
+            CatiaConnection cc = new CatiaConnection();
+
+            // Finde Catia Prozess
+            if (cc.CATIALaeuft())
             {
-                CatiaConnection cc = new CatiaConnection();
+                // Öffne ein neues Part
+                cc.ErzeugePart();
 
-                // Finde Catia Prozess
-                if (cc.CATIALaeuft())
-                {
-                    // Öffne ein neues Part
-                    cc.ErzeugePart();
+                // Erstelle eine Skizze
+                cc.ErstelleLeereSkizze();
 
-                    // Erstelle eine Skizze
-                    cc.ErstelleLeereSkizze();
+                // Generiere ein Profil
+                cc.ErzeugeProfil(dat);
 
-                    // Generiere ein Profil
-                    cc.ErzeugeProfil(dat);
-
-                    // Extrudiere Balken
-                    cc.ErzeugeDasNeueKreismuster(dat);
-                }
-                else
-                {
-                    MessageBox.Show("Laufende Catia Application nicht gefunden");
-                }
+                // Extrudiere Balken
+                cc.ErzeugeDasNeueKreismuster(dat);
+            }
+            else
+            {
+                MessageBox.Show("Laufende Catia Application nicht gefunden");
+            }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
         }
+
+
+
     }   
 }
