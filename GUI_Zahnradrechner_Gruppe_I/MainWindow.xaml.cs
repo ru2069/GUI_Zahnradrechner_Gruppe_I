@@ -613,7 +613,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double d = 200;
             double m = 2;
             double z = 100;
-            double b = 5;
+            double b = 30;
 
             try
             {
