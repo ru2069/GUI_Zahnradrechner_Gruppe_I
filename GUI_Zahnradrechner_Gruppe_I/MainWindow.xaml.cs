@@ -611,12 +611,18 @@ namespace GUI_Zahnradrechner_Gruppe_I
             Data dat = new Data();
         }      
 
+<<<<<<< Updated upstream
         public void CatiaControl()
         {
             double d = 200;
             double m = 2;
             double z = 100;
             double b = 30;
+=======
+            //try
+             //{
+            CatiaConnection cc = new CatiaConnection();
+>>>>>>> Stashed changes
 
             try
             {
