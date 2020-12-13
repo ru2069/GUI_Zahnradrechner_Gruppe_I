@@ -26,10 +26,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
             InitializeComponent();
         }
 
+        Data dat = new Data();
+
         //AUßENVERZAHNUNG
         public void Btn_ClickAußen(object sender, RoutedEventArgs e)
         {
-            Data dat = new Data();
 
             if (rdbtn_gerade.IsChecked == false && rdbtn_schräg.IsChecked == false)
             {
@@ -152,7 +153,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         //INNENVERZAHNUNG
         public void Btn_ClickInnen(object sender, RoutedEventArgs e)
         {
-            Data dat = new Data();
 
             //If-Abfragen Zahlcheck der Eingaben
             string zahlCheckModul = txb_modul_innen.Text;
@@ -608,15 +608,17 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
         {
-            double d = 200;
-            double m = 2;
-            double z = 100;
-            double b = 30;
+            CatiaControl();
+        }      
+
+
+        public void CatiaControl()
+        {
+
+            CatiaConnection cc = new CatiaConnection();
 
             try
             {
-                CatiaConnection cc = new CatiaConnection();
-
                 // Finde Catia Prozess
                 if (cc.CATIALaeuft())
                 {
@@ -627,10 +629,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     cc.ErstelleLeereSkizze();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(d, m, z);
+                    cc.ErzeugeProfil(dat);
 
                     // Extrudiere Balken
-                    cc.ErzeugeDasNeueKreismuster(b, z);
+                    cc.ErzeugeDasNeueKreismuster(dat);
                 }
                 else
                 {
