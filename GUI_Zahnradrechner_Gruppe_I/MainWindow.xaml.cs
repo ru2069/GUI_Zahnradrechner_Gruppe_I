@@ -231,7 +231,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 txb_modul_außen.Background = Brushes.White;
                 int round = Convert.ToInt32(cmb_rundung.Text);
 
-
                 double d = prg.Teilkreisdurchmesser_d(dat.getModul(), dat.getZähnezahl());
                 dat.setTeilkreisdurchmesser(d);
                 txb_teilkreisdurchmesser.Text = Convert.ToString(Math.Round(d, round) + " mm");
