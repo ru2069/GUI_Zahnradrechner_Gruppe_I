@@ -52,3 +52,4 @@ Mkfile.old
 dkms.conf
 GUI_Zahnradrechner_Gruppe_I/.vs/GUI_Zahnradrechner_Gruppe_I/v16/TestStore/0/testlog.manifest
 GUI_Zahnradrechner_Gruppe_I/.vs/GUI_Zahnradrechner_Gruppe_I/v16/TestStore/0/000.testlog
+*.cache
