@@ -79,25 +79,25 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaProfil.SetAbsoluteAxisData(arr);
         }
 
-        public void ErzeugeProfil(Data dat)
+        public void ErzeugeProfil(double d, double m, double z)
         {
             //Nullpunkt
             double x0 = 0;
             double y0 = 0;
 
             //Hilfsgrößen von Wilkos PDF
-            double Teilkreisradius = dat.getTeilkreisdurchmesser() / 2;
+            double Teilkreisradius = d / 2;
             double Hilfskreisradius = Teilkreisradius * 0.94;
-            double Fußkreisradius = Teilkreisradius - (1.25 * dat.getModul());
-            double Kopfkreisradius = Teilkreisradius + dat.getModul();
-            double Verrundungsradius = 0.35 * dat.getModul();
+            double Fußkreisradius = Teilkreisradius - (1.25 * m);
+            double Kopfkreisradius = Teilkreisradius + m;
+            double Verrundungsradius = 0.35 * m;
 
             double Alpha = 20;
-            double Beta = 90 / dat.getZähnezahl();
+            double Beta = 90 / z;
             double Betarad = Math.PI * Beta / 180;
             double Gamma = 90 - (Alpha - Beta);
             double Gammarad = Math.PI * Gamma / 180;
-            double Totalangle = 360.0 / dat.getZähnezahl();
+            double Totalangle = 360.0 / z;
             double Totalanglerad = Math.PI * Totalangle / 180;
 
             //Punkte
@@ -189,7 +189,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaPart.Part.Update();
         }
 
-        public void ErzeugeDasNeueKreismuster(Data dat)
+        public void ErzeugeDasNeueKreismuster(double b, double z)
         {
             ShapeFactory shapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             HybridShapeFactory hybridShapeFactory1 = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
@@ -206,10 +206,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
             kreismuster.CircularPatternParameters = CatCircularPatternParameters.catInstancesandAngularSpacing;
             AngularRepartition angularRepartition1 = kreismuster.AngularRepartition;
             Angle angle1 = angularRepartition1.AngularSpacing;
-            angle1.Value = Convert.ToDouble(360 / dat.getZähnezahl());
+            angle1.Value = Convert.ToDouble(360 / z);
             AngularRepartition angularRepartition2 = kreismuster.AngularRepartition;
             IntParam intParam1 = angularRepartition2.InstancesCount;
-            intParam1.Value = Convert.ToInt32(dat.getZähnezahl()) + 1;
+            intParam1.Value = Convert.ToInt32(z) + 1;
 
 
             //Kreismusterenden verbinden
@@ -226,13 +226,13 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             hsp_catiaPart.Part.Update();
 
-            ErzeugedenNeuenBlock(refVerbindung, shapeFactory1, dat);
+            ErzeugedenNeuenBlock(refVerbindung, shapeFactory1, b);
         }
 
-        public void ErzeugedenNeuenBlock(Reference refVerbindung, ShapeFactory sf1, Data dat)
+        public void ErzeugedenNeuenBlock(Reference refVerbindung, ShapeFactory sf1, double b)
         {
             hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
-            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, dat.getBreite());
+            Pad catPad1 = sf1.AddNewPadFromRef(refVerbindung, b);
 
 
 

@@ -608,21 +608,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
         {
-            Data dat = new Data();
-        }      
-
-<<<<<<< Updated upstream
-        public void CatiaControl()
-        {
             double d = 200;
             double m = 2;
             double z = 100;
             double b = 30;
-=======
-            //try
-             //{
-            CatiaConnection cc = new CatiaConnection();
->>>>>>> Stashed changes
 
             try
             {
@@ -638,10 +627,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     cc.ErstelleLeereSkizze();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(dat);
+                    cc.ErzeugeProfil(d, m, z);
 
                     // Extrudiere Balken
-                    cc.ErzeugeDasNeueKreismuster(dat);
+                    cc.ErzeugeDasNeueKreismuster(b, z);
                 }
                 else
                 {
