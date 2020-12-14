@@ -32,13 +32,15 @@
                         <TextBox        x:Name="txb_modul_außen"        ToolTip="Modul eingeben" TextWrapping="Wrap" Width="150" Margin="100,55,0,0" Height="25" SelectionBrush="White" Grid.ColumnSpan="4" FontFamily="Calibri Light" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                         <Label          x:Name="lbl_zaenezahl"  Content="Zähnezahl:" HorizontalAlignment="Left" Margin="0,100,0,125" FontFamily="Calibri Light"/>
                         <TextBox        x:Name="txb_zaehnezahl_außen"   ToolTip="Anzahl der Zähne eingeben" TextWrapping="Wrap" Width="150" Margin="100,100,150,0" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light" VerticalAlignment="Top"/>
-                        <Label          x:Name="lbl_verzahnung" Content="Verzahnung:" HorizontalAlignment="Left" Margin="0,210,0,10" Width="90" FontFamily="Calibri Light"/>
-                        <RadioButton    x:Name="rdbtn_gerade"           ToolTip="Geradverzahnung wählen" RenderTransformOrigin="0.333,4.891" Margin="102,220,32,10" Checked="rdbtn_gerade_Checked" Unchecked="rdbtn_gerade_Unchecked"/>
-                        <Label          x:Name="lbl_gerade"     Content="Gerade" HorizontalAlignment="Left" Margin="122,210,0,10" Width="90" FontFamily="Calibri Light" Grid.ColumnSpan="3"/>
-                        <RadioButton    x:Name="rdbtn_schräg"           ToolTip="Schrägverzahnung wählen" Margin="37,220,175,10" Width="20" Grid.ColumnSpan="2" Grid.Column="2" Checked="rdbtn_schräg_Checked"/>
-                        <Label          x:Name="lbl_schräg"     Content="Schräg" Margin="0,210,118,10" FontFamily="Calibri Light" RenderTransformOrigin="0.817,3.239" Grid.Column="3"/>
+                        <Label          x:Name="lbl_verzahnung" Content="Verzahnung:" HorizontalAlignment="Left" Margin="0,225,0,10" Width="90" FontFamily="Calibri Light"/>
+                        <RadioButton    x:Name="rdbtn_gerade"           ToolTip="Geradverzahnung wählen" RenderTransformOrigin="0.333,4.891" Margin="102,235,32,10" Checked="rdbtn_gerade_Checked" Unchecked="rdbtn_gerade_Unchecked"/>
+                        <Label          x:Name="lbl_gerade"     Content="Gerade" HorizontalAlignment="Left" Margin="123,225,0,10" Width="90" FontFamily="Calibri Light" Grid.ColumnSpan="3"/>
+                        <RadioButton    x:Name="rdbtn_schräg"           ToolTip="Schrägverzahnung wählen" Margin="34,235,0,10" Width="20" Grid.Column="2" Checked="rdbtn_schräg_Checked"/>
+                        <Label          x:Name="lbl_schräg"     Content="Schräg" Margin="0,225,117.556,10" FontFamily="Calibri Light" RenderTransformOrigin="0.817,3.239" Grid.Column="3"/>
                         <Label          x:Name="lbl_breite"     Content="Breite:" HorizontalAlignment="Left" Margin="0,143,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" RenderTransformOrigin="-0.152,0.616"/>
                         <TextBox        x:Name="txb_breite_außen"       ToolTip="Breite des Zahnrads eingeben" HorizontalAlignment="Left" Margin="100,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light"/>
+                        <Label          x:Name="lbl_bohrung"     Content="Bohrung:" HorizontalAlignment="Left" Margin="0,185,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" RenderTransformOrigin="-0.152,0.616"/>
+                        <TextBox        x:Name="txb_bohrung_außen"       ToolTip="Bohrung des Zahnrads wählen" HorizontalAlignment="Left" Margin="100,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light"/>
                     </Grid>
 
                     <!-- if schräg -->
@@ -122,7 +124,7 @@
 
 
                     </StackPanel>
-                    <Button x:Name="btn_beenden" FontFamily="Calibri Light" Content="Beenden" Canvas.Left="926" Canvas.Top="500" FontSize="20" Height="40" RenderTransformOrigin="-0.274,-0.251" Background="White" IsDefault="True" Click="btn_beenden_ClickAußen" Width="121"/>
+                    <Button x:Name="btn_beenden" FontFamily="Calibri Light" Content="Beenden" Canvas.Left="926" Canvas.Top="500" FontSize="20" Height="40" RenderTransformOrigin="-0.274,-0.251" Background="White" IsDefault="True" Click="btn_beenden_ClickAußen" Width="121" FontWeight="ExtraBold"/>
                     <Button Content="Weitere Info" Canvas.Left="965" Canvas.Top="311" Click="Btn_ClickInfo"/>
                     <Button Content="Hinweise" Canvas.Left="769" Canvas.Top="453" Click="Btn_ClickHinweise"/>
 
@@ -130,7 +132,7 @@
                         <Image HorizontalAlignment="Right" Width="380" Source="hsp_1.png" Margin="0,-7,10,259" RenderTransformOrigin="0.637,0.53"/>
                         <Image HorizontalAlignment="Right" Height="280" Margin="0,334,10,0" VerticalAlignment="Top" Width="356" Source="hsp_3.png"/>
                     </Grid>
-                    <Button Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="250" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaClick" Canvas.Left="650" Canvas.Top="500"/>
+                    <Button x:Name="btn_catiaErzeugen" Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="250" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaClick" Canvas.Left="650" Canvas.Top="500"/>
                     <Button Content="Catia V5 starten" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="150" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaStart" Canvas.Left="500" Canvas.Top="500"/>
                 </Canvas>
 
