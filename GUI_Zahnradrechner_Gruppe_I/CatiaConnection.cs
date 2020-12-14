@@ -86,52 +86,52 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double y0 = 0;
 
             //Hilfsgrößen von Wilkos PDF
-            double Teilkreisradius = dat.getTeilkreisdurchmesser() / 2;
-            double Hilfskreisradius = Teilkreisradius * 0.94;
-            double Fußkreisradius = Teilkreisradius - (1.25 * dat.getModul());
-            double Kopfkreisradius = Teilkreisradius + dat.getModul();
-            double Verrundungsradius = 0.35 * dat.getModul();
+            double teilkreisradius = dat.getTeilkreisdurchmesser() / 2;
+            double hilfskreisradius = teilkreisradius * 0.94;
+            double fußkreisradius = teilkreisradius - (1.25 * dat.getModul());
+            double kopfkreisradius = teilkreisradius + dat.getModul();
+            double verrundungsradius = 0.35 * dat.getModul();
 
-            double Alpha = 20;
-            double Beta = 90 / dat.getZähnezahl();
-            double Betarad = Math.PI * Beta / 180;
-            double Gamma = 90 - (Alpha - Beta);
-            double Gammarad = Math.PI * Gamma / 180;
-            double Totalangle = 360.0 / dat.getZähnezahl();
-            double Totalanglerad = Math.PI * Totalangle / 180;
+            double alpha = 20;
+            double beta = 90 / dat.getZähnezahl();
+            double betarad = Math.PI * beta / 180;
+            double gamma = 90 - (alpha - beta);
+            double gammarad = Math.PI * gamma / 180;
+            double totalangle = 360.0 / dat.getZähnezahl();
+            double totalanglerad = Math.PI * totalangle / 180;
 
             //Punkte
             //LinkerEvolKreis Mittelp. Koordinaten
-            double xMittelpunktaufEvol_links = Hilfskreisradius * Math.Cos(Gammarad);
-            double yMittelpunktaufEvol_links = Hilfskreisradius * Math.Sin(Gammarad);
+            double mittelpunktEvol_x = hilfskreisradius * Math.Cos(gammarad);
+            double mittelpunktEvol_y = hilfskreisradius * Math.Sin(gammarad);
 
             // Schnittpkt. auf Evolvente und Teilkreisradius
-            double xPunktAufEvolvente = -Teilkreisradius * Math.Sin(Betarad);
-            double yPunktAufEvolvente = Teilkreisradius * Math.Cos(Betarad);
+            double punktEvol_x = -teilkreisradius * Math.Sin(betarad);
+            double punktEvol_y = teilkreisradius * Math.Cos(betarad);
 
             //Evolventenkreis Radius
-            double EvolventenkreisRadius = Math.Sqrt(Math.Pow((xMittelpunktaufEvol_links - xPunktAufEvolvente), 2) + Math.Pow((yMittelpunktaufEvol_links - yPunktAufEvolvente), 2));
+            double EvolventenkreisRadius = Math.Sqrt(Math.Pow((mittelpunktEvol_x - punktEvol_x), 2) + Math.Pow((mittelpunktEvol_y - punktEvol_y), 2));
 
             //Koordinaten Schnittpunkt Kopfkreis und Evolventenkreis
-            double xEvolventenkopfkreis_links = Schnittpunkt_X(x0, y0, Kopfkreisradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius);
-            double yEvolventenkopfkreis_links = Schnittpunkt_Y(x0, y0, Kopfkreisradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius);
+            double evolventenKopfk_x = Schnittpunkt_X(x0, y0, kopfkreisradius, mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius);
+            double evolventenKopfk_y = Schnittpunkt_Y(x0, y0, kopfkreisradius, mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius);
 
             //Mittelpunktkoordinaten Verrundung
-            double xMittelpunktVerrundung_links = Schnittpunkt_X(x0, y0, Fußkreisradius + Verrundungsradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius + Verrundungsradius);
-            double yMittelpunktVerrundung_links = Schnittpunkt_Y(x0, y0, Fußkreisradius + Verrundungsradius, xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius + Verrundungsradius);
+            double mittelpunktVer_x = Schnittpunkt_X(x0, y0, fußkreisradius + verrundungsradius, mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius + verrundungsradius);
+            double mittelpunktVer_y = Schnittpunkt_Y(x0, y0, fußkreisradius + verrundungsradius, mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius + verrundungsradius);
 
             //Schnittpubktkoordinaten Verrundung - Evolventenkreis
-            double x_SP_EvolventeVerrundung_links = Schnittpunkt_X(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
-            double y_SP_EvolventeVerrundung_links = Schnittpunkt_Y(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+            double evolventenVer_x = Schnittpunkt_X(mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius, mittelpunktVer_x, mittelpunktVer_y, verrundungsradius);
+            double evolventenVer_y = Schnittpunkt_Y(mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius, mittelpunktVer_x, mittelpunktVer_y, verrundungsradius);
 
             //Schnittpunktkoordinaten Verrundung - Fußkreis
-            double x_SP_FußkreisradiusVerrundung_links = Schnittpunkt_X(x0, y0, Fußkreisradius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
-            double y_SP_FußkreisradiusVerrundung_links = Schnittpunkt_Y(x0, y0, Fußkreisradius, xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius);
+            double fußkreisVer_x = Schnittpunkt_X(x0, y0, fußkreisradius, mittelpunktVer_x, mittelpunktVer_y, verrundungsradius);
+            double fußkreisVer_y = Schnittpunkt_Y(x0, y0, fußkreisradius, mittelpunktVer_x, mittelpunktVer_y, verrundungsradius);
 
             //Koordinaten Anfangspunkt Fußkreis
-            double Hilfswinkel = Totalanglerad - Math.Atan(Math.Abs(x_SP_FußkreisradiusVerrundung_links) / Math.Abs(y_SP_FußkreisradiusVerrundung_links));
-            double x_AnfangspunktFußkreis = -Fußkreisradius * Math.Sin(Hilfswinkel);
-            double y_AnfangspunktFußkreis = Fußkreisradius * Math.Cos(Hilfswinkel);
+            double hilfswinkel = totalanglerad - Math.Atan(Math.Abs(fußkreisVer_x) / Math.Abs(fußkreisVer_y));
+            double anfangspunktFußk_x = -fußkreisradius * Math.Sin(hilfswinkel);
+            double anfangspunktFußk_y = fußkreisradius * Math.Cos(hilfswinkel);
 
             //Skizze umbenennen und öffnen
             hsp_catiaProfil.set_Name("Außenverzahntes Stirnrad");
@@ -139,48 +139,48 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             //Nun die Punkte in die Skizze
             Point2D point_Ursprung = catfactory2D1.CreatePoint(x0, y0);
-            Point2D pointAnfangFußkreisLinks = catfactory2D1.CreatePoint(x_AnfangspunktFußkreis, y_AnfangspunktFußkreis);
-            Point2D pointFußkreisVerrundungLinks = catfactory2D1.CreatePoint(x_SP_FußkreisradiusVerrundung_links, y_SP_FußkreisradiusVerrundung_links);
-            Point2D pointFußkreisVerrundungRechts = catfactory2D1.CreatePoint(-x_SP_FußkreisradiusVerrundung_links, y_SP_FußkreisradiusVerrundung_links);
-            Point2D pointMittelpunktVerrundungLinks = catfactory2D1.CreatePoint(xMittelpunktVerrundung_links, yMittelpunktVerrundung_links);
-            Point2D pointMittelpunktVerrundungRechts = catfactory2D1.CreatePoint(-xMittelpunktVerrundung_links, yMittelpunktVerrundung_links);
-            Point2D pointVerrundungEvolventeLinks = catfactory2D1.CreatePoint(x_SP_EvolventeVerrundung_links, y_SP_EvolventeVerrundung_links);
-            Point2D pointVerrundungEvolventeRechts = catfactory2D1.CreatePoint(-x_SP_EvolventeVerrundung_links, y_SP_EvolventeVerrundung_links);
-            Point2D pointMittelpunktevolventeLinks = catfactory2D1.CreatePoint(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links);
-            Point2D pointMittelpunktevolventeRechts = catfactory2D1.CreatePoint(-xMittelpunktaufEvol_links, yMittelpunktaufEvol_links);
-            Point2D pointEvolventenKopfkreisLinks = catfactory2D1.CreatePoint(xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
-            Point2D pointEvolventenKopfkreisRechts = catfactory2D1.CreatePoint(-xEvolventenkopfkreis_links, yEvolventenkopfkreis_links);
+            Point2D pointAnfangFußkreis = catfactory2D1.CreatePoint(anfangspunktFußk_x, anfangspunktFußk_y);
+            Point2D pointFußkreisVer_l = catfactory2D1.CreatePoint(fußkreisVer_x, fußkreisVer_y);
+            Point2D pointFußkreisVer_r = catfactory2D1.CreatePoint(-fußkreisVer_x, fußkreisVer_y);
+            Point2D pointMittelpunktVer_l = catfactory2D1.CreatePoint(mittelpunktVer_x, mittelpunktVer_y);
+            Point2D pointMittelpunktVer_r = catfactory2D1.CreatePoint(-mittelpunktVer_x, mittelpunktVer_y);
+            Point2D pointVerrundungEvol_l = catfactory2D1.CreatePoint(evolventenVer_x, evolventenVer_y);
+            Point2D pointVerrundungEvol_r = catfactory2D1.CreatePoint(-evolventenVer_x, evolventenVer_y);
+            Point2D pointMittelpunktevol_l = catfactory2D1.CreatePoint(mittelpunktEvol_x, mittelpunktEvol_y);
+            Point2D pointMittelpunktevol_r = catfactory2D1.CreatePoint(-mittelpunktEvol_x, mittelpunktEvol_y);
+            Point2D pointEvolventenKopfkreis_l = catfactory2D1.CreatePoint(evolventenKopfk_x, evolventenKopfk_y);
+            Point2D pointEvolventenKopfkreis_r = catfactory2D1.CreatePoint(-evolventenKopfk_x, evolventenKopfk_y);
 
             //Kreise
-            Circle2D KreisFrußkreis = catfactory2D1.CreateCircle(x0, y0, Fußkreisradius, 0, Math.PI * 2);
-            KreisFrußkreis.CenterPoint = point_Ursprung;
-            KreisFrußkreis.StartPoint = pointFußkreisVerrundungLinks;
-            KreisFrußkreis.EndPoint = pointAnfangFußkreisLinks;
+            Circle2D kreisFußkreis = catfactory2D1.CreateCircle(x0, y0, fußkreisradius, 0, Math.PI * 2);
+            kreisFußkreis.CenterPoint = point_Ursprung;
+            kreisFußkreis.StartPoint = pointFußkreisVer_l;
+            kreisFußkreis.EndPoint = pointAnfangFußkreis;
 
-            Circle2D KreisVerrundungLinks = catfactory2D1.CreateCircle(xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius, 0, Math.PI * 2);
-            KreisVerrundungLinks.CenterPoint = pointMittelpunktVerrundungLinks;
-            KreisVerrundungLinks.StartPoint = pointFußkreisVerrundungLinks;
-            KreisVerrundungLinks.EndPoint = pointVerrundungEvolventeLinks;
+            Circle2D kreisVerrundung_l = catfactory2D1.CreateCircle(mittelpunktVer_x, mittelpunktVer_y, verrundungsradius, 0, Math.PI * 2);
+            kreisVerrundung_l.CenterPoint = pointMittelpunktVer_l;
+            kreisVerrundung_l.StartPoint = pointFußkreisVer_l;
+            kreisVerrundung_l.EndPoint = pointVerrundungEvol_l;
 
-            Circle2D KreisEvolventenkreisLinks = catfactory2D1.CreateCircle(xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, 0, Math.PI * 2);
-            KreisEvolventenkreisLinks.CenterPoint = pointMittelpunktevolventeLinks;
-            KreisEvolventenkreisLinks.StartPoint = pointEvolventenKopfkreisLinks;
-            KreisEvolventenkreisLinks.EndPoint = pointVerrundungEvolventeLinks;
+            Circle2D kreisEvolventenkreis_l = catfactory2D1.CreateCircle(mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius, 0, Math.PI * 2);
+            kreisEvolventenkreis_l.CenterPoint = pointMittelpunktevol_l;
+            kreisEvolventenkreis_l.StartPoint = pointEvolventenKopfkreis_l;
+            kreisEvolventenkreis_l.EndPoint = pointVerrundungEvol_l;
 
-            Circle2D KreisKopfkreis = catfactory2D1.CreateCircle(x0, y0, Kopfkreisradius, 0, Math.PI * 2);
-            KreisKopfkreis.CenterPoint = point_Ursprung;
-            KreisKopfkreis.StartPoint = pointEvolventenKopfkreisRechts;
-            KreisKopfkreis.EndPoint = pointEvolventenKopfkreisLinks;
+            Circle2D kreisKopfkreis = catfactory2D1.CreateCircle(x0, y0, kopfkreisradius, 0, Math.PI * 2);
+            kreisKopfkreis.CenterPoint = point_Ursprung;
+            kreisKopfkreis.StartPoint = pointEvolventenKopfkreis_r;
+            kreisKopfkreis.EndPoint = pointEvolventenKopfkreis_l;
 
-            Circle2D KreisEvolventenkreisRechts = catfactory2D1.CreateCircle(-xMittelpunktaufEvol_links, yMittelpunktaufEvol_links, EvolventenkreisRadius, 0, Math.PI * 2);
-            KreisEvolventenkreisRechts.CenterPoint = pointMittelpunktevolventeRechts;
-            KreisEvolventenkreisRechts.StartPoint = pointVerrundungEvolventeRechts;
-            KreisEvolventenkreisRechts.EndPoint = pointEvolventenKopfkreisRechts;
+            Circle2D kreisEvolventenkreis_r = catfactory2D1.CreateCircle(-mittelpunktEvol_x, mittelpunktEvol_y, EvolventenkreisRadius, 0, Math.PI * 2);
+            kreisEvolventenkreis_r.CenterPoint = pointMittelpunktevol_r;
+            kreisEvolventenkreis_r.StartPoint = pointVerrundungEvol_r;
+            kreisEvolventenkreis_r.EndPoint = pointEvolventenKopfkreis_r;
 
-            Circle2D KreisVerrundungRechts = catfactory2D1.CreateCircle(-xMittelpunktVerrundung_links, yMittelpunktVerrundung_links, Verrundungsradius, 0, Math.PI * 2);
-            KreisVerrundungRechts.CenterPoint = pointMittelpunktVerrundungRechts;
-            KreisVerrundungRechts.StartPoint = pointVerrundungEvolventeRechts;
-            KreisVerrundungRechts.EndPoint = pointFußkreisVerrundungRechts;
+            Circle2D kreisVerrundung_r = catfactory2D1.CreateCircle(-mittelpunktVer_x, mittelpunktVer_y, verrundungsradius, 0, Math.PI * 2);
+            kreisVerrundung_r.CenterPoint = pointMittelpunktVer_r;
+            kreisVerrundung_r.StartPoint = pointVerrundungEvol_r;
+            kreisVerrundung_r.EndPoint = pointFußkreisVer_r;
 
 
 
@@ -242,50 +242,50 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
 
 
-        private double Schnittpunkt_X(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
+        private double Schnittpunkt_X(double mittelpunkt_x, double mittelpunkt_y, double radius1, double mittelpunkt2_x, double mittelpunkt2_y, double radius2)
         {
-            double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
-            double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
+            double d = Math.Sqrt(Math.Pow((mittelpunkt_x - mittelpunkt2_x), 2) + Math.Pow((mittelpunkt_y - mittelpunkt2_y), 2));
+            double l = (Math.Pow(radius1, 2) - Math.Pow(radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
             double epsilon = 0.00001;
 
-            if (Radius1 - l < -epsilon)
+            if (radius1 - l < -epsilon)
             {
                 MessageBox.Show("Fehler");
             }
-            if (Math.Abs(Radius1 - l) < epsilon)
+            if (Math.Abs(radius1 - l) < epsilon)
             {
                 h = 0;
             }
             else
             {
-                h = Math.Sqrt(Math.Pow(Radius1, 2) - Math.Pow(l, 2));
+                h = Math.Sqrt(Math.Pow(radius1, 2) - Math.Pow(l, 2));
             }
 
-            return l * (xMittelpunkt2 - xMittelpunkt) / d - h * (yMittelpunkt2 - yMittelpunkt) / d + xMittelpunkt;
+            return l * (mittelpunkt2_x - mittelpunkt_x) / d - h * (mittelpunkt2_y - mittelpunkt_y) / d + mittelpunkt_x;
         }
 
-        private double Schnittpunkt_Y(double xMittelpunkt, double yMittelpunkt, double Radius1, double xMittelpunkt2, double yMittelpunkt2, double Radius2)
+        private double Schnittpunkt_Y(double mittelpunkt_x, double mittelpunkt_y, double radius1, double mittelpunkt2_x, double mittelpunkt2_y, double Radius2)
         {
-            double d = Math.Sqrt(Math.Pow((xMittelpunkt - xMittelpunkt2), 2) + Math.Pow((yMittelpunkt - yMittelpunkt2), 2));
-            double l = (Math.Pow(Radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
+            double d = Math.Sqrt(Math.Pow((mittelpunkt_x - mittelpunkt2_x), 2) + Math.Pow((mittelpunkt_y - mittelpunkt2_y), 2));
+            double l = (Math.Pow(radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
             double epsilon = 0.00001;
 
-            if (Radius1 - l < -epsilon)
+            if (radius1 - l < -epsilon)
             {
                 MessageBox.Show("Fehler");
             }
-            if (Math.Abs(Radius1 - l) < epsilon)
+            if (Math.Abs(radius1 - l) < epsilon)
             {
                 h = 0;
             }
             else
             {
-                h = Math.Sqrt(Math.Pow(Radius1, 2) - Math.Pow(l, 2));
+                h = Math.Sqrt(Math.Pow(radius1, 2) - Math.Pow(l, 2));
             }
 
-            return l * (yMittelpunkt2 - yMittelpunkt) / d + h * (xMittelpunkt2 - xMittelpunkt) / d + yMittelpunkt;
+            return l * (mittelpunkt2_y - mittelpunkt_y) / d + h * (mittelpunkt2_x - mittelpunkt_x) / d + mittelpunkt_y;
         }
     }
 }
