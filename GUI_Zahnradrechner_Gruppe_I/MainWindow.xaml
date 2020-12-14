@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GUI_Zahnradrechner_Gruppe_I"
         mc:Ignorable="d"
-        Title="ZZ Zahnradrechner" Icon="Mini Logo 2.png" MinWidth="1344" MinHeight="750.71" >
+        Title="ZZ Zahnradrechner" Icon="Mini Logo 2.png" MinWidth="1344" MinHeight="750.71" Width="1323" Height="770.5" >
     <Grid Background="#FFA6A6A6">
         <Label Content="Willkommen beim ZZ Zahnradrechner!" FontFamily="Corbel Light" FontSize="40" Foreground="White" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Image  Stretch="Uniform" Height="130" VerticalAlignment="Top" Source="ZZ Logo 2.png" HorizontalAlignment="Right" Width="1344" />
@@ -122,7 +122,7 @@
 
 
                     </StackPanel>
-                    <Button x:Name="btn_beenden" FontFamily="Calibri Light" Content="Beenden" Canvas.Left="654" Canvas.Top="500" FontSize="20" Height="40" RenderTransformOrigin="-0.274,-0.251" Background="White" IsDefault="True" Click="btn_beenden_ClickAußen"/>
+                    <Button x:Name="btn_beenden" FontFamily="Calibri Light" Content="Beenden" Canvas.Left="926" Canvas.Top="500" FontSize="20" Height="40" RenderTransformOrigin="-0.274,-0.251" Background="White" IsDefault="True" Click="btn_beenden_ClickAußen" Width="121"/>
                     <Button Content="Weitere Info" Canvas.Left="965" Canvas.Top="311" Click="Btn_ClickInfo"/>
                     <Button Content="Hinweise" Canvas.Left="769" Canvas.Top="453" Click="Btn_ClickHinweise"/>
 
@@ -130,6 +130,8 @@
                         <Image HorizontalAlignment="Right" Width="380" Source="hsp_1.png" Margin="0,-7,10,259" RenderTransformOrigin="0.637,0.53"/>
                         <Image HorizontalAlignment="Right" Height="280" Margin="0,334,10,0" VerticalAlignment="Top" Width="356" Source="hsp_3.png"/>
                     </Grid>
+                    <Button Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="250" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaClick" Canvas.Left="650" Canvas.Top="500"/>
+                    <Button Content="Catia V5 starten" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="150" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaStart" Canvas.Left="500" Canvas.Top="500"/>
                 </Canvas>
 
             </TabItem>
@@ -221,8 +223,6 @@
                 </Canvas>
             </TabItem>
         </TabControl>
-        <Button Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" Margin="405,77,0,0" VerticalAlignment="Top" Width="138" Click="btn_CatiaClick"/>
-        <Button Content="Catia V5 starten" HorizontalAlignment="Left" Margin="290,77,0,0" VerticalAlignment="Top" Width="92" Click="btn_CatiaStart"/>
     </Grid>
 
 </Window>
