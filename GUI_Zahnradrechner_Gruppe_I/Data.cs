@@ -17,6 +17,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
         double breite;
         double material;
         double schr;
+        double bohrung;
+        public double Bohrungsauswahl;
+        public double bohrungsradius;
+        public double PassfederBreite;
+        public double PassfederHöhe;
+
 
         //Inputs
         public double getTeilkreisdurchmesser()
@@ -90,6 +96,17 @@ namespace GUI_Zahnradrechner_Gruppe_I
             this.schr = schr;
         }
 
+        public double getBohrung()
+        {
+            double bohrungsradius = bohrung / 2;
+            return bohrungsradius;
+        }
+
+        public void setBohrung(double bohrung)
+        {
+            this.bohrung = bohrung;
+        }
+
 
         //Konstanten
         //Kreiszahl
@@ -113,5 +130,139 @@ namespace GUI_Zahnradrechner_Gruppe_I
             return normeingriffswinkel;
         }
 
+        public double getPassfederbreite()
+        {
+            if (bohrung <= 12)
+            {
+                PassfederBreite = 4;
+            }
+            if (bohrung > 12 && bohrung <= 17)
+            {
+                PassfederBreite = 5;
+            }
+            if (bohrung > 17 && bohrung <= 22)
+            {
+                PassfederBreite = 6;
+            }
+            if (bohrung > 22 && bohrung <= 30)
+            {
+                PassfederBreite = 8;
+            }
+            if (bohrung > 30 && bohrung <= 38)
+            {
+                PassfederBreite = 10;
+            }
+            if (bohrung > 38 && bohrung <= 44)
+            {
+                PassfederBreite = 12;
+            }
+            if (bohrung > 44 && bohrung <= 50)
+            {
+                PassfederBreite = 14;
+            }
+            if (bohrung > 50 && bohrung <= 58)
+            {
+                PassfederBreite = 16;
+            }
+            if (bohrung > 58 && bohrung <= 65)
+            {
+                PassfederBreite = 18;
+            }
+            if (bohrung > 65 && bohrung <= 75)
+            {
+                PassfederBreite = 20;
+            }
+            if (bohrung > 75 && bohrung <= 85)
+            {
+                PassfederBreite = 22;
+            }
+            if (bohrung > 85 && bohrung <= 95)
+            {
+                PassfederBreite = 25;
+            }
+            if (bohrung > 95 && bohrung <= 110)
+            {
+                PassfederBreite = 28;
+            }
+            if (bohrung > 110 && bohrung <= 130)
+            {
+                PassfederBreite = 32;
+            }
+            if (bohrung > 130 && bohrung <= 150)
+            {
+                PassfederBreite = 36;
+            }
+            if (bohrung > 150 && bohrung <= 170)
+            {
+                PassfederBreite = 40;
+            }
+            if (bohrung > 170)
+            {
+                PassfederBreite = 45;
+            }
+
+            return PassfederBreite;
+        }
+
+        public double getPassfederhöhe()
+        {
+            if (bohrung <= 12)
+            {
+                PassfederHöhe = getBohrung() + 1.8;
+            }
+            if (bohrung > 12 && bohrung <= 17)
+            {
+                PassfederHöhe = getBohrung() + 2.3;
+            }
+            if (bohrung > 17 && bohrung <= 22)
+            {
+                PassfederHöhe = getBohrung() + 2.8;
+            }
+            if (bohrung > 22 && bohrung <= 44)
+            {
+                PassfederHöhe = getBohrung() + 3.3;
+            }
+            if (bohrung > 44 && bohrung <= 50)
+            {
+                PassfederHöhe = getBohrung() + 3.8;
+            }
+            if (bohrung > 50 && bohrung <= 58)
+            {
+                PassfederHöhe = getBohrung() + 4.3;
+            }
+            if (bohrung > 58 && bohrung <= 65)
+            {
+                PassfederHöhe = getBohrung() + 4.4;
+            }
+            if (bohrung > 65 && bohrung <= 75)
+            {
+                PassfederHöhe = getBohrung() + 4.9;
+            }
+            if (bohrung > 75 && bohrung <= 95)
+            {
+                PassfederHöhe = getBohrung() + 5.4;
+            }
+            if (bohrung > 95 && bohrung <= 110)
+            {
+                PassfederHöhe = getBohrung() + 6.4;
+            }
+            if (bohrung > 110 && bohrung <= 130)
+            {
+                PassfederHöhe = getBohrung() + 7.4;
+            }
+            if (bohrung > 130 && bohrung <= 150)
+            {
+                PassfederHöhe = getBohrung() + 8.4;
+            }
+            if (bohrung > 150 && bohrung <= 170)
+            {
+                PassfederHöhe = getBohrung() + 9.4;
+            }
+            if (bohrung > 170)
+            {
+                PassfederHöhe = getBohrung() + 10.4;
+            }
+            return PassfederHöhe;
+        }
     }
 }

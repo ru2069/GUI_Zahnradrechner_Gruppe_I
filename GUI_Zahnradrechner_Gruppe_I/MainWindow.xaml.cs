@@ -37,6 +37,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 MessageBox.Show("Bitte zwischen Gerad- oder Schrägverzahnung wählen!");
             }
 
+            if (rdbtn_keinebohrung.IsChecked == false && rdbtn_bohrung.IsChecked == false && rdbtn_passfedernut.IsChecked == false)
+            {
+                MessageBox.Show("Bitte Bohrung auswählen!");
+            }
+
             //If-Abfrage Radiobutton Gerade
             if (rdbtn_gerade.IsChecked == true)
             {
@@ -44,6 +49,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 string zahlCheckModul = txb_modul_außen.Text;
                 string zahlCheckZähnezahl = txb_zaehnezahl_außen.Text;
                 string zahlCheckBreite = txb_breite_außen.Text;
+                string zahlCheckBohrung = txb_bohrung_außen.Text;
 
                 if (Eingabecheck(zahlCheckModul) == true)
                 {
@@ -57,16 +63,33 @@ namespace GUI_Zahnradrechner_Gruppe_I
                         {
                             txb_breite_außen.Background = Brushes.White;
 
-                            //BERECHNUNGEN
-                            double m = Convert.ToDouble(txb_modul_außen.Text);
-                            dat.setModul(m);
-                            double z = Convert.ToDouble(txb_zaehnezahl_außen.Text);
-                            dat.setZähnezahl(z);
-                            double b = Convert.ToDouble(txb_breite_außen.Text);
-                            dat.setBreite(b);
-                            dat.setMaterial(material);
+                            if (Eingabecheck(zahlCheckBohrung) == true)
+                            {
+                                txb_bohrung_außen.Background = Brushes.White;
 
-                            BerechnungenGeradeAußen(dat);
+                                //BERECHNUNGEN
+                                double m = Convert.ToDouble(txb_modul_außen.Text);
+                                dat.setModul(m);
+                                double z = Convert.ToDouble(txb_zaehnezahl_außen.Text);
+                                dat.setZähnezahl(z);
+                                double b = Convert.ToDouble(txb_breite_außen.Text);
+                                dat.setBreite(b);
+                                dat.setMaterial(material);
+
+                                BerechnungenGeradeAußen(dat);
+                                
+
+                                btn_catiaErzeugen.Visibility = Visibility.Visible;
+
+                                double h = Convert.ToDouble(txb_bohrung_außen.Text);
+                                dat.setBohrung(h);
+                            }
+                            else if (Eingabecheck(zahlCheckBohrung) == false)
+                            {
+                                MessageBox.Show("Sie müssen eine Zahl als Bohrungsdurchmesser eingeben!");
+                                txb_bohrung_außen.Background = Brushes.OrangeRed;
+                            }
+
                         }
                         else if (Eingabecheck(zahlCheckBreite) == false)
                         {
@@ -221,6 +244,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         //Berechnungen
         private Data BerechnungenGeradeAußen(Data dat)
         {
+            
             //If-Abfragen Korrekte Eingaben
             if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0)
             {
@@ -530,11 +554,14 @@ namespace GUI_Zahnradrechner_Gruppe_I
             txb_grundkreisdurchmesser.Text = "";
             txb_stirnmodul.Text = "";
             txb_stirnteilung.Text = "";
+            txb_bohrung_außen.Text = "";
 
             txb_modul_außen.Background = Brushes.White;
             txb_breite_außen.Background = Brushes.White;
             txb_schraegungswinkel.Background = Brushes.White;
             txb_zaehnezahl_außen.Background = Brushes.White;
+            txb_bohrung_außen.Background = Brushes.White;
+            btn_catiaErzeugen.Visibility = Visibility.Hidden;
         }
 
         private void botton_neu_Click(object sender, RoutedEventArgs e)
@@ -582,7 +609,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             lbl_schraegungswinkel.Visibility = Visibility.Hidden;
             txb_schraegungswinkel.Visibility = Visibility.Hidden;
-            btn_catiaErzeugen.Visibility = Visibility.Visible;
         }
 
         private void rdbtn_gerade_Unchecked(object sender, RoutedEventArgs e)
@@ -609,7 +635,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
-        {
+        { 
             CatiaControl();
         }      
 
@@ -627,14 +653,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     // Öffne ein neues Part
                     cc.ErzeugePart();
 
-                    // Erstelle eine Skizze
-                    cc.ErstelleLeereSkizze();
-
                     // Generiere ein Profil
                     cc.ErzeugeProfil(dat);
-
-                    // Extrudiere Balken
-                    cc.ErzeugeDasNeueKreismuster(dat);
                 }
                 else
                 {
@@ -645,6 +665,27 @@ namespace GUI_Zahnradrechner_Gruppe_I
             {
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
+        }
+
+        private void rdbtn_keinebohrung_checked(object sender, RoutedEventArgs e)
+        {
+            lbl_bohrung.Visibility = Visibility.Hidden;
+            txb_bohrung_außen.Visibility = Visibility.Hidden;
+            dat.Bohrungsauswahl = 0;
+        }
+
+        private void rdbtn_bohrung_checked(object sender, RoutedEventArgs e)
+        {
+            lbl_bohrung.Visibility = Visibility.Visible;
+            txb_bohrung_außen.Visibility = Visibility.Visible;
+            dat.Bohrungsauswahl = 1;
+        }
+
+        private void rdbtn_passfedernut_checked(object sender, RoutedEventArgs e)
+        {
+            lbl_bohrung.Visibility = Visibility.Visible;
+            txb_bohrung_außen.Visibility = Visibility.Visible;
+            dat.Bohrungsauswahl = 2;
         }
     }   
 }

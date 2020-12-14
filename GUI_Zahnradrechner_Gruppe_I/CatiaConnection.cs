@@ -41,9 +41,18 @@ namespace GUI_Zahnradrechner_Gruppe_I
             return true;
         }
 
-        public void ErstelleLeereSkizze()
+        private void ErzeugeAchsensystem()
         {
-            // geometrisches Set auswaehlen und umbenennen
+            object[] arr = new object[] {0.0, 0.0, 0.0,
+                                         0.0, 1.0, 0.0,
+                                         0.0, 0.0, 1.0 };
+            hsp_catiaProfil.SetAbsoluteAxisData(arr);
+        }
+
+        public void ErzeugeProfil(Data dat)
+        {
+            //ERSTELLE SKIZZE
+            
             HybridBodies catHybridBodies1 = hsp_catiaPart.Part.HybridBodies;
             HybridBody catHybridBody1;
             try
@@ -58,29 +67,22 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 return;
             }
             catHybridBody1.set_Name("Profile");
-            // neue Skizze im ausgewaehlten geometrischen Set anlegen
             Sketches catSketches1 = catHybridBody1.HybridSketches;
             OriginElements catOriginElements = hsp_catiaPart.Part.OriginElements;
             Reference catReference1 = (Reference)catOriginElements.PlaneYZ;
             hsp_catiaProfil = catSketches1.Add(catReference1);
 
-            // Achsensystem in Skizze erstellen 
+
+            //ERSTELLE ACHSENSYSTEM 
+
             ErzeugeAchsensystem();
 
-            // Part aktualisieren
+            //UPDATE
             hsp_catiaPart.Part.Update();
-        }
 
-        private void ErzeugeAchsensystem()
-        {
-            object[] arr = new object[] {0.0, 0.0, 0.0,
-                                         0.0, 1.0, 0.0,
-                                         0.0, 0.0, 1.0 };
-            hsp_catiaProfil.SetAbsoluteAxisData(arr);
-        }
 
-        public void ErzeugeProfil(Data dat)
-        {
+
+
             //Nullpunkt
             double x0 = 0;
             double y0 = 0;
@@ -187,10 +189,10 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaProfil.CloseEdition();
 
             hsp_catiaPart.Part.Update();
-        }
 
-        public void ErzeugeDasNeueKreismuster(Data dat)
-        {
+
+
+            //ERSTELLE KREISMUSTER
             ShapeFactory shapeFactory1 = (ShapeFactory)hsp_catiaPart.Part.ShapeFactory;
             HybridShapeFactory hybridShapeFactory1 = (HybridShapeFactory)hsp_catiaPart.Part.HybridShapeFactory;
 
@@ -226,7 +228,99 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             hsp_catiaPart.Part.Update();
 
+
+            //ERSTELLE BLOCK
             ErzeugedenNeuenBlock(refVerbindung, shapeFactory1, dat);
+
+
+            if (dat.Bohrungsauswahl == 1)
+            {
+                Sketches sketchesBohrung = catHybridBody1.HybridSketches;
+                OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+                Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+                hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
+
+                ErzeugeAchsensystem();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaProfil.set_Name("Bohrung");
+
+                Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+
+                Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, dat.getBohrung());
+
+                hsp_catiaProfil.CloseEdition();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+                Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, dat.getBreite());
+                hsp_catiaPart.Part.Update();
+            }
+            if (dat.Bohrungsauswahl == 2)
+            {
+                //Koordinaten der Punkte
+
+                //KoordinatenPunkt Links Kreis-Anfang Passfeder
+                double x_AnfangkreisZuPassfeder = -dat.getPassfederbreite() / 2;
+                double y_AnfangkreisZuPassfeder = Math.Sqrt(Math.Pow(dat.getBohrung(), 2) - Math.Pow((dat.getPassfederbreite() / 2), 2));
+
+                //KoordinatenPunkt LinksobenPassfeder
+                double x_Passfederecke = -dat.getPassfederbreite() / 2;
+                double y_Passfederecke = dat.getPassfederhöhe();
+
+
+                Sketches sketchesBohrung = catHybridBody1.HybridSketches;
+                OriginElements catoriginelements = hsp_catiaPart.Part.OriginElements;
+                Reference refmxPlaneX = (Reference)catoriginelements.PlaneYZ;
+                hsp_catiaProfil = catSketches1.Add(refmxPlaneX);
+
+                ErzeugeAchsensystem();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaProfil.set_Name("Passfederbohrung");
+
+                Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
+
+
+
+                //Punkte in die Skizze
+                Point2D POINTLinksAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+                Point2D POINTLinksPassfederEcke = catfactory2D2.CreatePoint(x_Passfederecke, y_Passfederecke);
+                Point2D POINTRechtsPassfederEcke = catfactory2D2.CreatePoint(-x_Passfederecke, y_Passfederecke);
+                Point2D POINTRechtsAnfangKreisZuPassfeder = catfactory2D2.CreatePoint(-x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+
+                //Linen ziehen
+                Line2D PassfederKanteLinks = catfactory2D2.CreateLine(x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder, x_Passfederecke, y_Passfederecke);
+                PassfederKanteLinks.StartPoint = POINTLinksAnfangKreisZuPassfeder;
+                PassfederKanteLinks.EndPoint = POINTLinksPassfederEcke;
+
+                Line2D PassfederHöhenkante = catfactory2D2.CreateLine(x_Passfederecke, y_Passfederecke, -x_Passfederecke, y_Passfederecke);
+                PassfederHöhenkante.StartPoint = POINTLinksPassfederEcke;
+                PassfederHöhenkante.EndPoint = POINTRechtsPassfederEcke;
+
+                Line2D PassfederKanteRechts = catfactory2D2.CreateLine(-x_Passfederecke, y_Passfederecke, -x_AnfangkreisZuPassfeder, y_AnfangkreisZuPassfeder);
+                PassfederKanteRechts.StartPoint = POINTRechtsPassfederEcke;
+                PassfederKanteRechts.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
+
+                Circle2D KreisFürPassfeder = catfactory2D2.CreateCircle(x0, y0, dat.getBohrung(), 0, Math.PI * 2);
+                KreisFürPassfeder.CenterPoint = point_Ursprung;
+                KreisFürPassfeder.EndPoint = POINTRechtsAnfangKreisZuPassfeder;
+                KreisFürPassfeder.StartPoint = POINTLinksAnfangKreisZuPassfeder;
+
+
+
+
+                hsp_catiaProfil.CloseEdition();
+
+                hsp_catiaPart.Part.Update();
+
+                hsp_catiaPart.Part.InWorkObject = hsp_catiaPart.Part.MainBody;
+                Pocket Tasche = shapeFactory1.AddNewPocket(hsp_catiaProfil, dat.getBreite());
+                hsp_catiaPart.Part.Update();
+            }
         }
 
         public void ErzeugedenNeuenBlock(Reference refVerbindung, ShapeFactory sf1, Data dat)
@@ -238,9 +332,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             hsp_catiaPart.Part.Update();
         }
-
-
-
 
         private double Schnittpunkt_X(double mittelpunkt_x, double mittelpunkt_y, double radius1, double mittelpunkt2_x, double mittelpunkt2_y, double radius2)
         {
