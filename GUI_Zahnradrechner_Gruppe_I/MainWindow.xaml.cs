@@ -582,6 +582,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             lbl_schraegungswinkel.Visibility = Visibility.Hidden;
             txb_schraegungswinkel.Visibility = Visibility.Hidden;
+            btn_catiaErzeugen.Visibility = Visibility.Visible;
         }
 
         private void rdbtn_gerade_Unchecked(object sender, RoutedEventArgs e)
@@ -594,6 +595,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             lbl_schraegungswinkel.Visibility = Visibility.Visible;
             txb_schraegungswinkel.Visibility = Visibility.Visible;
+            btn_catiaErzeugen.Visibility = Visibility.Hidden;
+
         }
 
 
