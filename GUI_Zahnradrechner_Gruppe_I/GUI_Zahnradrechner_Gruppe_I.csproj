@@ -67,27 +67,27 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Interop.HybridShapeTypeLib">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.HybridShapeTypeLib.dll</HintPath>
+      <HintPath>.\Interop.HybridShapeTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.INFITF">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.INFITF.dll</HintPath>
+      <HintPath>.\Interop.INFITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.KnowledgewareTypeLib">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.KnowledgewareTypeLib.dll</HintPath>
+      <HintPath>.\Interop.KnowledgewareTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.MECMOD">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.MECMOD.dll</HintPath>
+      <HintPath>.\Interop.MECMOD.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.PARTITF">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.PARTITF.dll</HintPath>
+      <HintPath>.\Interop.PARTITF.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="Interop.ProductStructureTypeLib">
-      <HintPath>..\..\..\..\..\Desktop\CATIAV5 Verweise Zahnrad\CATIAV5 Verweise Zahnrad\Interop.ProductStructureTypeLib.dll</HintPath>
+      <HintPath>.\Interop.ProductStructureTypeLib.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
