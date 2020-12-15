@@ -41,12 +41,13 @@
                         <TextBox        x:Name="txb_breite_außen"       ToolTip="Breite des Zahnrads eingeben" HorizontalAlignment="Left" Margin="100,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light"/>
                         <Label          x:Name="lbl_bohrung"     Visibility="Hidden" Content="Bohrung:" HorizontalAlignment="Left" Margin="0,185,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" RenderTransformOrigin="-0.152,0.616"/>
                         <TextBox        x:Name="txb_bohrung_außen"       Visibility="Hidden" ToolTip="Bohrung des Zahnrads wählen" HorizontalAlignment="Left" Margin="100,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light"/>
+                        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="178" Margin="0,47,0,0" VerticalAlignment="Top" Width="278" Grid.ColumnSpan="3"/>
                     </Grid>
 
-                    <Grid Canvas.Left="223" Canvas.Top="10">
+                    <Grid Canvas.Left="232">
                         <RadioButton x:Name="rdbtn_keinebohrung"  Content="Keine Bohrung" Grid.Column="3" HorizontalAlignment="Left" Margin="55,60,0,0" VerticalAlignment="Top" Checked="rdbtn_keinebohrung_checked"/>
                         <RadioButton x:Name="rdbtn_bohrung" Content="Bohrung" Grid.Column="3" HorizontalAlignment="Left" Margin="55,100,0,0" VerticalAlignment="Top" Checked="rdbtn_bohrung_checked"/>
-                        <RadioButton x:Name="rdbtn_passfedernut" Content="Bohrung mit Passfedernut" Grid.Column="3" HorizontalAlignment="Left" Margin="55,131,-63,0" VerticalAlignment="Top" Checked="rdbtn_passfedernut_checked"/>
+                        <RadioButton x:Name="rdbtn_passfedernut" Content="Bohrung mit Passfedernut" HorizontalAlignment="Left" Margin="55,136,-63,-5" VerticalAlignment="Top" Checked="rdbtn_passfedernut_checked"/>
                     </Grid>
 
                     <!-- if schräg -->
@@ -56,8 +57,8 @@
 
                     <!-- Materialwahl + Rundung -->
 
-                    <Grid Height="170" Width="500" Canvas.Top="300" Background="#FF9DB3E4">
-                        <ComboBox       x:Name="cmb_materialwahl" ToolTip="Material des Zahnrads auswählen" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="148" FontFamily="Calibri Light" SelectionChanged="cmb_materialwahl_SelectionChanged" AllowDrop="True">
+                    <Grid Height="190" Width="500" Canvas.Top="300" Background="#FF9DB3E4">
+                        <ComboBox       x:Name="cmb_materialwahl" ToolTip="Material des Zahnrads auswählen" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="187" FontFamily="Calibri Light" SelectionChanged="cmb_materialwahl_SelectionChanged" AllowDrop="True">
                             <ComboBoxItem IsSelected="True" FontFamily="Calibri Light">Vergütungsstahl</ComboBoxItem>
                             <ComboBoxItem FontFamily="Calibri Light">Nichtrostender Stahl</ComboBoxItem>
                             <ComboBoxItem FontFamily="Calibri Light">Kunststoff</ComboBoxItem>
@@ -65,13 +66,13 @@
                             <ComboBoxItem FontFamily="Calibri Light">Messing</ComboBoxItem>
                         </ComboBox>
 
-                        <Label Margin="178,10,0,0" FontFamily="Calibri Light" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212">
+                        <Label Margin="247,7,0,0" FontFamily="Calibri Light" Height="56" VerticalAlignment="Top" HorizontalAlignment="Left" Width="212">
                             <Label.Content>
                                 <AccessText TextWrapping="Wrap" Text="Auf wie viele Stellen nach dem Komma soll gerundet werden?"/>
                             </Label.Content>
                         </Label>
 
-                        <ComboBox x:Name="cmb_rundung" ToolTip="Rundung der errechneten Werte wählen" HorizontalAlignment="Left" Margin="178,65,0,0" VerticalAlignment="Top" Width="120" FontFamily="Calibri Light" AllowDrop="True">
+                        <ComboBox x:Name="cmb_rundung" ToolTip="Rundung der errechneten Werte wählen" HorizontalAlignment="Left" Margin="247,65,0,0" VerticalAlignment="Top" Width="120" FontFamily="Calibri Light" AllowDrop="True">
                             <ComboBoxItem IsSelected="True" >0</ComboBoxItem>
                             <ComboBoxItem>1</ComboBoxItem>
                             <ComboBoxItem>2</ComboBoxItem>
