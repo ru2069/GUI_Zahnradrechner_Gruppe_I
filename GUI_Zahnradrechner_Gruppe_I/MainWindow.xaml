@@ -19,7 +19,7 @@
 
                     <!-- Eingabe Grid -->
 
-                    <Grid Height="300" Width="400" Background="#FF6BA3DA">
+                    <Grid Height="300" Width="500" Background="#FF6BA3DA">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="155*"/>
                             <ColumnDefinition Width="14*"/>
@@ -31,12 +31,12 @@
                         <Label          x:Name="lbl_modul"      Content="Modul:" HorizontalAlignment="Left" Margin="0,54,0,170" FontFamily="Calibri Light"/>
                         <TextBox        x:Name="txb_modul_außen"        ToolTip="Modul eingeben" TextWrapping="Wrap" Width="150" Margin="100,55,0,0" Height="25" SelectionBrush="White" Grid.ColumnSpan="4" FontFamily="Calibri Light" VerticalAlignment="Top" HorizontalAlignment="Left"/>
                         <Label          x:Name="lbl_zaenezahl"  Content="Zähnezahl:" HorizontalAlignment="Left" Margin="0,100,0,125" FontFamily="Calibri Light"/>
-                        <TextBox        x:Name="txb_zaehnezahl_außen"   ToolTip="Anzahl der Zähne eingeben" TextWrapping="Wrap" Width="150" Margin="100,100,150,0" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light" VerticalAlignment="Top"/>
+                        <TextBox        x:Name="txb_zaehnezahl_außen"   ToolTip="Anzahl der Zähne eingeben" TextWrapping="Wrap" Width="150" Margin="100,100,28,0" Height="25" Grid.ColumnSpan="3" FontFamily="Calibri Light" VerticalAlignment="Top"/>
                         <Label          x:Name="lbl_verzahnung" Content="Verzahnung:" HorizontalAlignment="Left" Margin="0,225,0,10" Width="90" FontFamily="Calibri Light"/>
                         <RadioButton    x:Name="rdbtn_gerade"           ToolTip="Geradverzahnung wählen" RenderTransformOrigin="0.333,4.891" Margin="102,235,32,10" Checked="rdbtn_gerade_Checked" Unchecked="rdbtn_gerade_Unchecked"/>
                         <Label          x:Name="lbl_gerade"     Content="Gerade" HorizontalAlignment="Left" Margin="123,225,0,10" Width="90" FontFamily="Calibri Light" Grid.ColumnSpan="3"/>
-                        <RadioButton    x:Name="rdbtn_schräg"           ToolTip="Schrägverzahnung wählen" Margin="34,235,0,10" Width="20" Grid.Column="2" Checked="rdbtn_schräg_Checked"/>
-                        <Label          x:Name="lbl_schräg"     Content="Schräg" Margin="0,225,117.556,10" FontFamily="Calibri Light" RenderTransformOrigin="0.817,3.239" Grid.Column="3"/>
+                        <RadioButton    x:Name="rdbtn_schräg"           ToolTip="Schrägverzahnung wählen" Margin="10,235,55,10" Width="20" Grid.Column="1" Checked="rdbtn_schräg_Checked" Grid.ColumnSpan="2"/>
+                        <Label          x:Name="lbl_schräg"     Content="Schräg" Margin="17,225,168,10" FontFamily="Calibri Light" RenderTransformOrigin="0.817,3.239" Grid.Column="2" Grid.ColumnSpan="2"/>
                         <Label          x:Name="lbl_breite"     Content="Breite:" HorizontalAlignment="Left" Margin="0,143,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" RenderTransformOrigin="-0.152,0.616"/>
                         <TextBox        x:Name="txb_breite_außen"       ToolTip="Breite des Zahnrads eingeben" HorizontalAlignment="Left" Margin="100,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="25" Grid.ColumnSpan="4" FontFamily="Calibri Light"/>
                         <Label          x:Name="lbl_bohrung"     Visibility="Hidden" Content="Bohrung:" HorizontalAlignment="Left" Margin="0,185,0,0" VerticalAlignment="Top" FontFamily="Calibri Light" RenderTransformOrigin="-0.152,0.616"/>
@@ -56,7 +56,7 @@
 
                     <!-- Materialwahl + Rundung -->
 
-                    <Grid Height="170" Width="400" Canvas.Top="300" Background="#FF9DB3E4">
+                    <Grid Height="170" Width="500" Canvas.Top="300" Background="#FF9DB3E4">
                         <ComboBox       x:Name="cmb_materialwahl" ToolTip="Material des Zahnrads auswählen" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="148" FontFamily="Calibri Light" SelectionChanged="cmb_materialwahl_SelectionChanged" AllowDrop="True">
                             <ComboBoxItem IsSelected="True" FontFamily="Calibri Light">Vergütungsstahl</ComboBoxItem>
                             <ComboBoxItem FontFamily="Calibri Light">Nichtrostender Stahl</ComboBoxItem>
