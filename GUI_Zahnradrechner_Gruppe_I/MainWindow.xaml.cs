@@ -733,5 +733,36 @@ namespace GUI_Zahnradrechner_Gruppe_I
             txb_bohrung_außen.Visibility = Visibility.Visible;
             dat.Bohrungsauswahl = 2;
         }
+
+        private void btn_catiaErzeugen_innen_Click(object sender, RoutedEventArgs e)
+        {
+            CatiaControlInnen();
+        }
+        public void CatiaControlInnen()
+        {
+
+            CatiaConnection cc = new CatiaConnection();
+
+            try
+            {
+                // Finde Catia Prozess
+                if (cc.CATIALaeuft())
+                {
+                    // Öffne ein neues Part
+                    cc.ErzeugePart();
+
+                    // Generiere ein Profil
+                    cc.ErzeugeProfilInnen(dat);
+                }
+                else
+                {
+                    MessageBox.Show("Laufende Catia Application nicht gefunden");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Exception aufgetreten");
+            }
+        }
     }   
 }
