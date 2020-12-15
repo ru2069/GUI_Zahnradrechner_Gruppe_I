@@ -96,15 +96,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
                                 dat.setZähnezahl(z);
                                 double b = Convert.ToDouble(txb_breite_außen.Text);
                                 dat.setBreite(b);
+                                double h = Convert.ToDouble(txb_bohrung_außen.Text);
+                                dat.setBohrung(h);
                                 dat.setMaterial(material);
 
                                 BerechnungenGeradeAußen(dat);
-
-
-                                btn_catiaErzeugen.Visibility = Visibility.Visible;
-
-                                double h = Convert.ToDouble(txb_bohrung_außen.Text);
-                                dat.setBohrung(h);
                             }
                             else if (Eingabecheck(zahlCheckBohrung) == false && rdbtn_passfedernut.IsChecked == true)
                             {
@@ -122,17 +118,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
                                 dat.setZähnezahl(z);
                                 double b = Convert.ToDouble(txb_breite_außen.Text);
                                 dat.setBreite(b);
-                                dat.setMaterial(material);
-
-                                BerechnungenGeradeAußen(dat);
-
-
-                                btn_catiaErzeugen.Visibility = Visibility.Visible;
-
                                 double h = Convert.ToDouble(txb_bohrung_außen.Text);
                                 dat.setBohrung(h);
-                            }
+                                dat.setMaterial(material);
 
+                                BerechnungenGeradeAußen(dat); 
+                            }
                         }
                         else if (Eingabecheck(zahlCheckBreite) == false)
                         {
@@ -289,7 +280,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             
             //If-Abfragen Korrekte Eingaben
-            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0)
+            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0 && (dat.getBohrung() * 2) <= ((dat.getZähnezahl() * dat.getModul()) * 0.67))
             {
                 Berechnungen prg = new Berechnungen();
 
@@ -332,6 +323,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 double masse = prg.Masse(dat.getMaterial(), volumen);
                 txb_masse.Text = Convert.ToString("~" + (Math.Round(masse, round)) + " g");
 
+                btn_catiaErzeugen.Visibility = Visibility.Visible;
             }
             // Fehler: Falsche Werte
             else
@@ -359,6 +351,17 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     txb_breite_außen.Background = Brushes.OrangeRed;
                 }
 
+                if ((dat.getBohrung() * 2) <= 0)
+                {
+                    MessageBox.Show("Bitte Bohrungsdurchmesser über 0 wählen!");
+                    txb_bohrung_außen.Background = Brushes.OrangeRed;
+                }
+
+                if ((dat.getBohrung() * 2) > (dat.getModul() * dat.getZähnezahl()) * 0.67)
+                {
+                    MessageBox.Show("Bitte kleineren Bohrungsdurchmesser wählen!");
+                    txb_bohrung_außen.Background = Brushes.OrangeRed;
+                }
             }
             return dat;
         }
