@@ -280,7 +280,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             
             //If-Abfragen Korrekte Eingaben
-            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0 && (dat.getBohrung() * 2) <= ((dat.getZähnezahl() * dat.getModul()) * 0.67))
+            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 9 && dat.getModul() > 0 && dat.getBreite() > 0 && (dat.getBohrung() * 2) <= ((dat.getZähnezahl() * dat.getModul()) * 0.67))
             {
                 Berechnungen prg = new Berechnungen();
 
@@ -330,12 +330,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
             {
                 if (dat.getZähnezahl() % 1 != 0)
                 {
-                    MessageBox.Show("Bitte eine ganzzahlige Zähnezahl über 2 eingeben!");
+                    MessageBox.Show("Bitte eine ganzzahlige Zähnezahl über 9 eingeben!");
                     txb_zaehnezahl_außen.Background = Brushes.OrangeRed;
                 }
-                if (dat.getZähnezahl() < 2)
+                if (dat.getZähnezahl() < 9)
                 {
-                    MessageBox.Show("Bitte eine ganzzahlige Zähnezahl über 2 eingeben!");
+                    MessageBox.Show("Bitte eine ganzzahlige Zähnezahl über 9 eingeben!");
                     txb_zaehnezahl_außen.Background = Brushes.OrangeRed;
                 }
 
