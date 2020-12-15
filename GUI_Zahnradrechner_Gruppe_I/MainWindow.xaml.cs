@@ -63,7 +63,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                         {
                             txb_breite_außen.Background = Brushes.White;
 
-                            if (Eingabecheck(zahlCheckBohrung) == true)
+                            if (rdbtn_keinebohrung.IsChecked == true)
                             {
                                 txb_bohrung_außen.Background = Brushes.White;
 
@@ -78,16 +78,59 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
                                 BerechnungenGeradeAußen(dat);
                                 
+                                btn_catiaErzeugen.Visibility = Visibility.Visible;
+                            }
+                            else if (Eingabecheck(zahlCheckBohrung) == false && rdbtn_bohrung.IsChecked == true)
+                            {
+                                MessageBox.Show("Sie müssen eine Zahl als Bohrungsdurchmesser eingeben!");
+                                txb_bohrung_außen.Background = Brushes.OrangeRed;
+                            }
+                            else if (Eingabecheck(zahlCheckBohrung) == true && rdbtn_bohrung.IsChecked == true)
+                            {
+                                txb_bohrung_außen.Background = Brushes.White;
+
+                                //BERECHNUNGEN
+                                double m = Convert.ToDouble(txb_modul_außen.Text);
+                                dat.setModul(m);
+                                double z = Convert.ToDouble(txb_zaehnezahl_außen.Text);
+                                dat.setZähnezahl(z);
+                                double b = Convert.ToDouble(txb_breite_außen.Text);
+                                dat.setBreite(b);
+                                dat.setMaterial(material);
+
+                                BerechnungenGeradeAußen(dat);
+
 
                                 btn_catiaErzeugen.Visibility = Visibility.Visible;
 
                                 double h = Convert.ToDouble(txb_bohrung_außen.Text);
                                 dat.setBohrung(h);
                             }
-                            else if (Eingabecheck(zahlCheckBohrung) == false)
+                            else if (Eingabecheck(zahlCheckBohrung) == false && rdbtn_passfedernut.IsChecked == true)
                             {
                                 MessageBox.Show("Sie müssen eine Zahl als Bohrungsdurchmesser eingeben!");
                                 txb_bohrung_außen.Background = Brushes.OrangeRed;
+                            }
+                            else if (Eingabecheck(zahlCheckBohrung) == true && rdbtn_passfedernut.IsChecked == true)
+                            {
+                                txb_bohrung_außen.Background = Brushes.White;
+
+                                //BERECHNUNGEN
+                                double m = Convert.ToDouble(txb_modul_außen.Text);
+                                dat.setModul(m);
+                                double z = Convert.ToDouble(txb_zaehnezahl_außen.Text);
+                                dat.setZähnezahl(z);
+                                double b = Convert.ToDouble(txb_breite_außen.Text);
+                                dat.setBreite(b);
+                                dat.setMaterial(material);
+
+                                BerechnungenGeradeAußen(dat);
+
+
+                                btn_catiaErzeugen.Visibility = Visibility.Visible;
+
+                                double h = Convert.ToDouble(txb_bohrung_außen.Text);
+                                dat.setBohrung(h);
                             }
 
                         }
