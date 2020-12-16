@@ -77,7 +77,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                                 dat.setMaterial(material);
 
                                 BerechnungenGeradeAußen(dat);
-                                
+
                                 btn_catiaErzeugen.Visibility = Visibility.Visible;
                             }
                             else if (Eingabecheck(zahlCheckBohrung) == false && rdbtn_bohrung.IsChecked == true)
@@ -122,7 +122,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                                 dat.setBohrung(h);
                                 dat.setMaterial(material);
 
-                                BerechnungenGeradeAußen(dat); 
+                                BerechnungenGeradeAußen(dat);
                             }
                         }
                         else if (Eingabecheck(zahlCheckBreite) == false)
@@ -291,7 +291,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
         //Berechnungen
         private Data BerechnungenGeradeAußen(Data dat)
         {
-            
+
             //If-Abfragen Korrekte Eingaben
             if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 9 && dat.getModul() > 0 && dat.getBreite() > 0 && (dat.getBohrung() * 2) <= ((dat.getZähnezahl() * dat.getModul()) * 0.67))
             {
@@ -479,7 +479,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             Berechnungen prg = new Berechnungen();
 
             //If-Abfragen Korrekte Eingaben
-            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0 && dat.getAußenradius() * 2 >= (dat.getModul() * dat.getZähnezahl() * 1.05))
+            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0 && dat.getAußenradius() * 2 >= (dat.getModul() * dat.getZähnezahl() * 1.15) && (dat.getAußenradius() * 2 <= (dat.getModul() * dat.getZähnezahl() * 2.5)))
             {
                 txb_breite_innen.Background = Brushes.White;
                 txb_zaehnezahl_innen.Background = Brushes.White;
@@ -537,9 +537,14 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     MessageBox.Show("Bitte Außendurchmesser über 0 wählen!");
                     txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
                 }
-                if (dat.getAußenradius() * 2 < (dat.getModul() * dat.getZähnezahl() * 1.05))
+                if (dat.getAußenradius() * 2 < (dat.getModul() * dat.getZähnezahl() * 1.15))
                 {
                     MessageBox.Show("Bitte größeren Außendurchmesser wählen!");
+                    txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
+                }
+                if (dat.getAußenradius() * 2 > (dat.getModul() * dat.getZähnezahl() * 2.5))
+                {
+                    MessageBox.Show("Bitte kleineren Außendurchmesser wählen!");
                     txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
                 }
             }
@@ -712,9 +717,9 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
         //Catia Control Außen
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
-        { 
+        {
             CatiaControl();
-        }      
+        }
 
         public void CatiaControl()
         {
@@ -800,5 +805,5 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
         }
-    }   
+    }
 }
