@@ -654,6 +654,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             txb_zaehnezahl_innen.Background = Brushes.White;
             txb_breite_innen.Background = Brushes.White;
             txb_verzahnungsdurchmesser_innen.Background = Brushes.White;
+            btn_catiaErzeugen_innen.Visibility = Visibility.Hidden;
         }
 
 
