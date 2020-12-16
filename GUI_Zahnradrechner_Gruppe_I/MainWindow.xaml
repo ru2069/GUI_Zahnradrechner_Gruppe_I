@@ -236,7 +236,7 @@
                     <Button Content="Hinweise" Click="Btn_ClickHinweiseInnen" Width="112" Canvas.Left="664" Canvas.Top="261" />
                     <Button x:Name="btn_beenden1" Content="Beenden" FontSize="20" Height="40" RenderTransformOrigin="-0.274,-0.251" Background="White" IsDefault="True" Click="btn_beenden_ClickInnen" FontFamily="Calibri Light" Canvas.Left="930" Canvas.Top="500" Width="258"/>
 
-                    <Button x:Name="btn_catiaErzeugen_innen" Visibility="Visible" Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="250" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Canvas.Left="570" Canvas.Top="500" Click="btn_catiaErzeugen_innen_Click"/>
+                    <Button x:Name="btn_catiaErzeugen_innen" Visibility="Hidden" Content="Erzeuge mit Catia V5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="250" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Canvas.Left="570" Canvas.Top="500" Click="btn_catiaErzeugen_innen_Click"/>
                     <Button Content="Catia V5 starten" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="150" Background="White" FontSize="20" FontWeight="ExtraBold" FontFamily="Calibri Light" Click="btn_CatiaStart" Canvas.Left="420" Canvas.Top="500"/>
                 </Canvas>
             </TabItem>

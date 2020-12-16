@@ -215,6 +215,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             string zahlCheckModul = txb_modul_innen.Text;
             string zahlCheckZähnezahl = txb_zaehnezahl_innen.Text;
             string zahlCheckBreite = txb_breite_innen.Text;
+            string zahlCheckAußendurchmesser = txb_verzahnungsdurchmesser_innen.Text;
 
             if (Eingabecheck(zahlCheckModul) == true)
             {
@@ -228,16 +229,28 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     {
                         txb_breite_innen.Background = Brushes.White;
 
-                        //BERECHNUNGEN
-                        double m = Convert.ToDouble(txb_modul_innen.Text);
-                        dat.setModul(m);
-                        double z = Convert.ToDouble(txb_zaehnezahl_innen.Text);
-                        dat.setZähnezahl(z);
-                        double b = Convert.ToDouble(txb_breite_innen.Text);
-                        dat.setBreite(b);
+                        if (Eingabecheck(zahlCheckAußendurchmesser) == true)
+                        {
+                            txb_verzahnungsdurchmesser_innen.Background = Brushes.White;
 
-                        //Berechnungen
-                        BerechnungenGeradeInnen(dat);
+                            //BERECHNUNGEN
+                            double m = Convert.ToDouble(txb_modul_innen.Text);
+                            dat.setModul(m);
+                            double z = Convert.ToDouble(txb_zaehnezahl_innen.Text);
+                            dat.setZähnezahl(z);
+                            double b = Convert.ToDouble(txb_breite_innen.Text);
+                            dat.setBreite(b);
+                            double ad = Convert.ToDouble(txb_verzahnungsdurchmesser_innen.Text);
+                            dat.setAußendurchmesser(ad);
+
+                            //Berechnungen
+                            BerechnungenGeradeInnen(dat);
+                        }
+                        else if (Eingabecheck(zahlCheckAußendurchmesser) == false)
+                        {
+                            MessageBox.Show("Sie müssen eine Zahl als Außendurchmesser eingeben!");
+                            txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
+                        }
                     }
                     else if (Eingabecheck(zahlCheckBreite) == false)
                     {
@@ -466,7 +479,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             Berechnungen prg = new Berechnungen();
 
             //If-Abfragen Korrekte Eingaben
-            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0)
+            if (dat.getZähnezahl() % 1 == 0 && dat.getZähnezahl() >= 2 && dat.getModul() > 0 && dat.getBreite() > 0 && dat.getAußenradius() * 2 >= (dat.getModul() * dat.getZähnezahl() * 1.05))
             {
                 txb_breite_innen.Background = Brushes.White;
                 txb_zaehnezahl_innen.Background = Brushes.White;
@@ -497,6 +510,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
                 double zahnfüßhöhe = prg.Zahnfußhöhe_hf(dat.getModul(), kopfspiel);
                 txb_zahnfußhoehe1.Text = Convert.ToString(Math.Round(zahnfüßhöhe, round) + " mm");
+
+                btn_catiaErzeugen_innen.Visibility = Visibility.Visible;
             }
 
             // Fehler: Falsche Werte
@@ -516,6 +531,16 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 {
                     MessageBox.Show("Bitte Breite über 0 wählen!");
                     txb_breite_innen.Background = Brushes.OrangeRed;
+                }
+                if (dat.getAußenradius() <= 0)
+                {
+                    MessageBox.Show("Bitte Außendurchmesser über 0 wählen!");
+                    txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
+                }
+                if (dat.getAußenradius() * 2 < (dat.getModul() * dat.getZähnezahl() * 1.05))
+                {
+                    MessageBox.Show("Bitte größeren Außendurchmesser wählen!");
+                    txb_verzahnungsdurchmesser_innen.Background = Brushes.OrangeRed;
                 }
             }
             return dat;
@@ -641,12 +666,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
         private void Btn_ClickHinweise(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Der Kopfspielfaktor ist mit 0,167 belegt. " + Environment.NewLine + "Der Normeingriffswinkel beträgt 20°.");
+            MessageBox.Show("• Der Kopfspielfaktor ist mit 0,167 belegt. " + Environment.NewLine + "• Der Normeingriffswinkel beträgt 20°." + Environment.NewLine + "• Bohrung und Passfedernut werden bei der Volumen-/Masseberechnung vernachlässigt.");
         }
 
         private void Btn_ClickHinweiseInnen(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Der Kopfspielfaktor ist mit 0,167 belegt.");
+            MessageBox.Show("• Der Kopfspielfaktor ist mit 0,167 belegt." + Environment.NewLine + "• Bohrung und Passfedernut werden bei der Volumen-/Masseberechnung vernachlässigt.");
         }
 
 
@@ -673,6 +698,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
 
         //API
+
+        //Start Catia
         private void btn_CatiaStart(object sender, RoutedEventArgs e)
         {
             Process P = new Process();
@@ -680,11 +707,11 @@ namespace GUI_Zahnradrechner_Gruppe_I
             P.Start();
         }
 
+        //Catia Control Außen
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
         { 
             CatiaControl();
         }      
-
 
         public void CatiaControl()
         {
@@ -713,6 +740,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             }
         }
 
+        //Ausblendung Bohrung
         private void rdbtn_keinebohrung_checked(object sender, RoutedEventArgs e)
         {
             lbl_bohrung.Visibility = Visibility.Hidden;
@@ -734,10 +762,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
             dat.Bohrungsauswahl = 2;
         }
 
+        //Catia Control Innen
         private void btn_catiaErzeugen_innen_Click(object sender, RoutedEventArgs e)
         {
             CatiaControlInnen();
         }
+
         public void CatiaControlInnen()
         {
 

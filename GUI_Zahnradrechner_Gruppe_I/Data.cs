@@ -18,13 +18,17 @@ namespace GUI_Zahnradrechner_Gruppe_I
         double material;
         double schr;
         double bohrung;
+        double außendurchmesser;
         public double Bohrungsauswahl;
         public double bohrungsradius;
         public double PassfederBreite;
         public double PassfederHöhe;
 
 
-        //Inputs
+        //INPUTS
+
+
+        //Teilkreisdurchmesser
         public double getTeilkreisdurchmesser()
         {
             return teilkreisdurchmesser;
@@ -34,8 +38,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
         {
             this.teilkreisdurchmesser = teilkreisdurchmesser;
         }
-        //Modul
 
+        //Modul
         public double getModul()
         {
             return modul;
@@ -47,7 +51,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
         //Zähnezahl
-
         public double getZähnezahl()
         {
             return zähnezahl;
@@ -59,7 +62,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
         //Breite
-
         public double getBreite()
         {
             return breite;
@@ -71,7 +73,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
         //Material
-
         public double getMaterial()
         {
             return material;
@@ -83,7 +84,6 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
         //Schrägungswinkel
-
         public double getSchrägungswinkel()
         {
             double schrDegree;
@@ -96,6 +96,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
             this.schr = schr;
         }
 
+
+        //Bohrungsradius
         public double getBohrung()
         {
             double bohrungsradius = bohrung / 2;
@@ -108,28 +110,43 @@ namespace GUI_Zahnradrechner_Gruppe_I
         }
 
 
-        //Konstanten
-        //Kreiszahl
+        //Außenradius
+        public double getAußenradius()
+        {
+            double außenradius = außendurchmesser / 2;
+            return außenradius;
+        }
 
+        public void setAußendurchmesser(double außendurchmesser)
+        {
+            this.außendurchmesser = außendurchmesser;
+        }
+
+
+
+
+        //KONSTANTEN
+
+
+        //Kreiszahl
         public double getKreiszahl()
         {
             return kreiszahl;
         }
 
         //Kopspielzahl
-
         public double getKopfspielzahl()
         {
             return kopfspielzahl;
         }
 
         //Normeingriffswinkel
-
         public double getNormeingriffswinkel()
         {
             return normeingriffswinkel;
         }
 
+        //Passfeder
         public double getPassfederbreite()
         {
             if (bohrung <= 12)

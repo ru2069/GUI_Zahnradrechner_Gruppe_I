@@ -470,9 +470,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaProfil.set_Name("Block");
             Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
             
-            //hier außendurchmesser einfügen!!!
             //Kreis(e)
-            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, Fußkreisradius + 10);
+            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, dat.getAußenradius() + 10);
 
 
             hsp_catiaProfil.CloseEdition();
