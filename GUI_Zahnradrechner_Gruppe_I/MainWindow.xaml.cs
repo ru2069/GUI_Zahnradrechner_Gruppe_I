@@ -648,12 +648,12 @@ namespace GUI_Zahnradrechner_Gruppe_I
             txb_zahnhoehe1.Text = "";
             txb_zahnkopfhoehe1.Text = "";
             txb_zahnfußhoehe1.Text = "";
+            txb_verzahnungsdurchmesser_innen.Text = "";
 
             txb_modul_innen.Background = Brushes.White;
             txb_zaehnezahl_innen.Background = Brushes.White;
             txb_breite_innen.Background = Brushes.White;
-
-
+            txb_verzahnungsdurchmesser_innen.Background = Brushes.White;
         }
 
 
