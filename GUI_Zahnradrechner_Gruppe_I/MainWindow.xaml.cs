@@ -707,6 +707,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
             P.Start();
         }
 
+
+
         //Catia Control Außen
         public void btn_CatiaClick(object sender, RoutedEventArgs e)
         { 
@@ -727,7 +729,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                     cc.ErzeugePart();
 
                     // Generiere ein Profil
-                    cc.ErzeugeProfil(dat);
+                    cc.ErzeugeProfilAußen(dat);
                 }
                 else
                 {
@@ -739,6 +741,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
                 MessageBox.Show(ex.Message, "Exception aufgetreten");
             }
         }
+
 
         //Ausblendung Bohrung
         private void rdbtn_keinebohrung_checked(object sender, RoutedEventArgs e)
@@ -761,6 +764,8 @@ namespace GUI_Zahnradrechner_Gruppe_I
             txb_bohrung_außen.Visibility = Visibility.Visible;
             dat.Bohrungsauswahl = 2;
         }
+
+
 
         //Catia Control Innen
         private void btn_catiaErzeugen_innen_Click(object sender, RoutedEventArgs e)
