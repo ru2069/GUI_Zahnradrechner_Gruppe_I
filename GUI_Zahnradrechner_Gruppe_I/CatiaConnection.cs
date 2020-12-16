@@ -109,7 +109,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double totalanglerad = Math.PI * totalangle / 180;
 
             //Schnittpunkte und Koordinaten
-            //Evolventenkreis LH Center Koordinaten
+            //Evolventenkreis Center Koordinaten
             double mittelpunktEvol_x = hilfskreisradius * Math.Cos(gammarad);
             double mittelpunktEvol_y = hilfskreisradius * Math.Sin(gammarad);
 
@@ -364,7 +364,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
 
             //Radien und Winkel umgestellt
             double Teilkreisradius = dat.getTeilkreisdurchmesser() / 2;
-            //?!
+            //Angenährt
             double Hilfskreisradius = Teilkreisradius * 1.12;
             double Kopfkreisradius = Teilkreisradius - (1.25 * dat.getModul());
             double Fußkreisradius = Teilkreisradius + dat.getModul();
@@ -447,7 +447,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             Factory2D catfactory2D2 = hsp_catiaProfil.OpenEdition();
 
             //Kreis
-            Circle2D KreisFürBohrungsskizze = catfactory2D2.CreateClosedCircle(x0, y0, dat.getAußenradius() + 10);
+            Circle2D Scheibe = catfactory2D2.CreateClosedCircle(x0, y0, dat.getAußenradius());
 
             //Skizze schließen
             hsp_catiaProfil.CloseEdition();
@@ -597,13 +597,13 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double d = Math.Sqrt(Math.Pow((mittelpunkt_x - mittelpunkt2_x), 2) + Math.Pow((mittelpunkt_y - mittelpunkt2_y), 2));
             double l = (Math.Pow(radius1, 2) - Math.Pow(radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
-            double epsilon = 0.00001;
+            double h_fehler = 0.00001;
 
-            if (radius1 - l < -epsilon)
+            if (radius1 - l < -h_fehler)
             {
                 MessageBox.Show("Fehler");
             }
-            if (Math.Abs(radius1 - l) < epsilon)
+            if (Math.Abs(radius1 - l) < h_fehler)
             {
                 h = 0;
             }
@@ -621,13 +621,13 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double d = Math.Sqrt(Math.Pow((mittelpunkt_x - mittelpunkt2_x), 2) + Math.Pow((mittelpunkt_y - mittelpunkt2_y), 2));
             double l = (Math.Pow(radius1, 2) - Math.Pow(Radius2, 2) + Math.Pow(d, 2)) / (d * 2);
             double h;
-            double epsilon = 0.00001;
+            double h_fehler = 0.00001;
 
-            if (radius1 - l < -epsilon)
+            if (radius1 - l < -h_fehler)
             {
                 MessageBox.Show("Fehler");
             }
-            if (Math.Abs(radius1 - l) < epsilon)
+            if (Math.Abs(radius1 - l) < h_fehler)
             {
                 h = 0;
             }
