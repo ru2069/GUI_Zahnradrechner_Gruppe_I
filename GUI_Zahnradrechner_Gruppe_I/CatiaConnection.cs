@@ -577,6 +577,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             hsp_catiaPart.Part.Update();
         }
 
+        //Tasche
         public void ErzeugeTasche(Data dat, Reference refVerbindung, ShapeFactory sf1)
         {
             //Tasche
