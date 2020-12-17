@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\rdier\Desktop\Release .net Fw\</PublishUrl>
+    <PublishUrl>E:\Hochschule\HSP Aufgaben\GUI_Zahnradrechner_Gruppe_I\HSP_Sprint3\Release\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
