@@ -379,7 +379,7 @@ namespace GUI_Zahnradrechner_Gruppe_I
             double Totalangelrad = Math.PI * Totalangel / 180;
 
             //Schnittpunkte und Koordinaten
-            //Evolventenkreis LH Center Koordinaten
+            //Evolventenkreis Center Koordinaten
             double xMittelpunktaufEvol_links = Hilfskreisradius * Math.Cos(Gammarad);
             double yMittelpunktaufEvol_links = Hilfskreisradius * Math.Sin(Gammarad);
 

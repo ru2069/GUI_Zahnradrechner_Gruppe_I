@@ -348,3 +348,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+GUI_Zahnradrechner_Gruppe_I/.vs/GUI_Zahnradrechner_Gruppe_I/v16/.suo
+GUI_Zahnradrechner_Gruppe_I/obj/Debug/GUI_Zahnradrechner_Gruppe_I.csprojAssemblyReference.cache
+GUI_Zahnradrechner_Gruppe_I/obj/Debug/GUI_Zahnradrechner_Gruppe_I_MarkupCompile.cache
